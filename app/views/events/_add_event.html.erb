@@ -1,0 +1,21 @@
+<div class="container d-flex justify-content-center">
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :title %>
+    <!-- Manually adding datetime-local input for start_date -->
+    <div class="form-group">
+      <%= f.label :start_date %>
+      <%= f.object.start_date.present? ? f.object.start_date.to_datetime.strftime('%Y-%m-%dT%H:%M') : "" %>
+      <%= f.text_field :start_date, type: 'datetime-local', class: 'form-control' %>
+    </div>
+    <!-- Manually adding datetime-local input for end_date -->
+    <div class="form-group">
+      <%= f.label :end_date %>
+      <%= f.object.end_date.present? ? f.object.end_date.to_datetime.strftime('%Y-%m-%dT%H:%M') : "" %>
+      <%= f.text_field :end_date, type: 'datetime-local', class: 'form-control' %>
+    </div>
+    <%= f.input :capacity %>
+    <%= f.input :price %>
+    <%= f.association :location %>
+    <%= f.submit "Create Class", class: "btn btn-custom my-3" %>
+  <% end %>
+</div>
