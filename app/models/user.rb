@@ -13,4 +13,5 @@ class User < ApplicationRecord
   def is_teacher?
     events.any?
   end
+  has_one_attached :photo
 end
