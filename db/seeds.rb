@@ -68,9 +68,10 @@ puts "there are now #{User.count} users, aka losers..."
 puts "let's make some events..."
 
 event1 = Event.create!(title: "Professional Prancing", description: "Dainty yet masculine prancing by the world's foremost prancer", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location1)
-event2 = Event.create!(title: "Heels Beginners", description: "Heels dance class for beginners", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location4)
-event3 = Event.create!(title: "Heels Beginners", description: "Heels dance class for beginners", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location5)
-
+event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location4)
+event3 = Event.create!(title: "Prancing 101", description: "Heels dance class for beginners", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location5)
+Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location4)
+Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location5)
 
 puts "there are now #{Event.count} events as well"
 
