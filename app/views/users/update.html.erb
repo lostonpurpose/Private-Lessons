@@ -1,0 +1,8 @@
+<div class="container d-flex justify-content-center">
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file %>
+    <%= f.submit "Update your data", class: "btn btn-custom my-3" %>
+  <% end %>
+</div>
