@@ -50,6 +50,10 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem 'ostruct'
+# Gemfile
+gem 'cloudinary', '~> 1.16.0'
+
 
 group :development, :test do
   gem "dotenv-rails"
