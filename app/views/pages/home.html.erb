@@ -1,24 +1,29 @@
-<div class="container w-100">
-  <div class="row">
-    <div class="column">
-      <p class="mb-2 mt-4 d-flex align-items-center fw-bold">Check out these FUCKING COOL classes</p>
-      <%# going to have to iterate after re-seeding %>
-      <div class="card-product">
+<div class="row">
+  <div class="column">
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+      <div class="container">
+        <h1>Dance! <strong>Prance!</strong> </h1>
+        <p>We are dance people for your enjoyment</p>
+        <p class="mb-2 mt-4 d-flex align-items-center fw-bold">Check out these FUCKING COOL classes</p>
+      </div>
+    </div>
+    <%# going to have to iterate after re-seeding %>
+    <div class="card-product">
+      <%= image_tag "farley.jpg" %>
+      <div class="card-product-infos">
+        <h2>Prancing 201</h2>
+        <p>Continue on your <strong>prancing</strong> journey.</p>
+      </div>
+    </div>
+    <%# going to have to iterate after re-seeding %>
+    <% @events.each do |event| %>
+      <div class="card-product mt-3">
         <%= image_tag "farley.jpg" %>
         <div class="card-product-infos">
-          <h2>Prancing 201</h2>
-          <p>Continue on your <strong>prancing</strong> journey.</p>
+          <h2><%= event.title %></h2>
+          <p><%= event.description %></p>
         </div>
       </div>
-      <%# going to have to iterate after re-seeding %>
-      <% @events.each do |event| %>
-        <div class="card-product mt-3">
-          <%= image_tag "farley.jpg" %>
-          <div class="card-product-infos">
-            <h2><%= event.title %></h2>
-            <p><%= event.description %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
+  <%# DBCFE8 %>
