@@ -11,6 +11,12 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def show
+    @user = current_user # teacher user organizing this event (= teacher)
+    @event = Event.find(params[:id]) # event I identify through show url id
+    @bookings = Booking.where(event_id: @event) # bookings list for this event
+  end
+
   def create
     @event = Event.new(event_params)
     @event.user = current_user

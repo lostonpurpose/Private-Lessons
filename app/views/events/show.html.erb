@@ -1,0 +1,18 @@
+<div class="container w-100">
+  <div class="row">
+    <div class="column">
+      <p class="mb-2 mt-4 d-flex align-items-center fw-bold">Who is joining?</p>
+      <div>       <%# Iterating through attending users % %>
+        <% @bookings.each do |booking| %>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center" >
+              <%= cl_image_tag(booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered") %>
+              <span><%= booking.user.name %></span>
+            </div>
+            <span><%= booking.state %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
