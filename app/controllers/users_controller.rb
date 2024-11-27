@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
   def dashboard
-
+    @bookings = Booking.all
+    @events = Event.all # current_user.events
   end
 
   def show
