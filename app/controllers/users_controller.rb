@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def dashboard
-    @bookings = Booking.all
-    @events = Event.all # current_user.events
+    @bookings = current_user.bookings
+    @events = current_user.events
   end
 end
