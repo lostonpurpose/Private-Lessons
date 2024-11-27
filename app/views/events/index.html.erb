@@ -1,1 +1,27 @@
-<h2>all my events here</h2>
+<div class="container w-100">
+  <div class="row">
+    <div class="column">
+      <p class="my-2 d-flex align-items-center fw-bold">Upcoming Events</p>
+      <%# Iterating through attending events %>
+      <% @events.each do |event| %>
+        <div class="card-product">
+          <div class="d-flex flex-column justify-content-between">
+            <div class="d-flex flex-row justify-content-between p-2">
+              <h2><%= event.title %></h2>
+              <p><strong><%= event.location.address %></strong></p>
+            </div>
+            <div class="card-product-info-grid pt-1">
+              <div>
+                <%= image_tag "farley.jpg" %>
+              </div>
+              <div class="card-product-infos">
+                <p><%= event.description %></p>
+                <p class="opacity-25 attendee-number text-end">Attendees: <%= event.bookings.count %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
