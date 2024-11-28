@@ -52,15 +52,11 @@
 <div class="container w-100 mt-5 d-flex justify-content-center">
   <% if @event.video.attached? %>
     <div class="text-center">
-      <p>Your video has been uploaded!</p>
-      <video width="100%" controls>
-        <source src="<%= url_for(@event.video) %>" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <p>Your video has been saved.</p>
     </div>
   <% else %>
     <div class="text-center">
-      <p>No video available for this event.</p>
+      <p>No videos yet.</p>
     </div>
   <% end %>
 </div>
