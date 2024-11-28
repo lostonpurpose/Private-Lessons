@@ -3,8 +3,5 @@ class PagesController < ApplicationController
 
   def home
     @events = Event.all
-    if user_signed_in?
-      @user = current_user
-    end
   end
 end
