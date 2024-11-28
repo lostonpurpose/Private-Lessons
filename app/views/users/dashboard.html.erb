@@ -14,10 +14,9 @@
         <% @events.each do |event| %>
           <% if current_user == event.user %>
             <div class="card-product">
+              <h2><%= event.title %></h2>
               <%= image_tag "farley.jpg" %>
               <div class="card-product-infos">
-                <p><%= event.description %></p>
-                <h2><%= event.title %></h2>
                 <p><%= event.description %></p>
               </div>
             </div>

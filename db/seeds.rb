@@ -8,10 +8,10 @@ Location.destroy_all
 
 puts "making locations..."
 
-location1 = Location.create(name: "The Wagon", address: "Meguro, Tokyo")
-location2 = Location.create(name: "Grandma's Pumpkin Patch", address: "Akihabara, Tokyo, Japan, Earth, Solar Sytem, Milky Way")
-location3 = Location.create(name: "Bigfoot's Crotch", address: "Paris, France")
-location4 = Location.create(name: "Shinjuku Noah studio C", address: "Shinjuku")
+location1 = Location.create(name: "The Wagon", address: "Meguro")
+location2 = Location.create(name: "Grandma's Pumpkin Patch", address: "Akihabara")
+location3 = Location.create(name: "Bigfoot's Crotch", address: "Cleveland")
+location4 = Location.create(name: "Shinjuku Noah studio C", address: "Koenji")
 location5 = Location.create(name: "Shinjuku Noah studio A", address: "Shinjuku")
 
 puts "there are now #{Location.count} locations, nerds..."
