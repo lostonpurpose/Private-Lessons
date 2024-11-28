@@ -1,12 +1,11 @@
-<div>
+<div class="text-end">
   <%= link_to "Create class", new_event_path(@events), class: "btn btn-custom" %>
 </div>
 <%= render "/shared/event_card" %>
-<div >
-  <%# <%= link_to "Add Video", , class: "btn btn-custom" %>
+<div class="d-flex flex-row-reverse bd-highlight">
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add Video to Event
+  <button type="button" class="btn btn-custom m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Video
   </button>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -19,14 +18,12 @@
         <div class="modal-body">
           Select a video file then click update button.
           <%= simple_form_for @event do |f| %>
-            <% f.input :video %>
-            <%= f.submit "Select", class: "btn btn-custom my-3" %>
+            <%= f.input :video, as: :file %>
+            <%= f.submit "Upload Video", class: "btn btn-custom my-3" %>
           <% end %>
-          <%= f.input :title %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button link_to edit_event_path type="button" class="btn btn-primary">Upload video</button>
         </div>
       </div>
     </div>
