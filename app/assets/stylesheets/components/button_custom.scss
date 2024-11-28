@@ -1,5 +1,18 @@
 .btn-custom {
-    background-color: #7252F2;
+    background-color: #543A70;
     color: white;
-    margin: 4px;
+
+}
+
+.btn-right {
+  margin-left: auto; /* Flexbox way */
+  float: right; /* Alternatively, you can use float */
+  background-color: #543A70;
+  border-radius: 5px;
+}
+
+.btn-right:hover {
+  background-color: #F6F5FA; /* Set background to white on hover */
+  color: #543A70; /* Change text color to match the border */
+  border: 1px solid #543A70; /* Add border with the same color as the background */
 }
