@@ -3,5 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @events = Event.all
+    if current_user && current_user.is_teacher?
+      @events = Event.where(user: current_user)
+    end
   end
 end
