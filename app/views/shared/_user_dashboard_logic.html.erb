@@ -1,0 +1,12 @@
+<p class="mb-2 mt-4 d-flex align-items-center fw-bold">Attending</p>
+<%# Iterating through attending events %>
+<% @events.each do |event, booking| %>
+  <div class="card-product">
+    <%= image_tag "farley.jpg" %>
+    <div class="card-product-infos">
+      <h2><%= event.title %></h2>
+      <p><%= event.description %></p>
+      <p class="opacity-25 attendee-number">Attendees: <%= event.bookings.count %></p>
+    </div>
+  </div>
+<% end %>

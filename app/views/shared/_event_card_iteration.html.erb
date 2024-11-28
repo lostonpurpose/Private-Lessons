@@ -1,0 +1,21 @@
+<% @events.each do |event| %>
+  <div class="card-product">
+    <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex flex-row justify-content-between p-2">
+        <h2><%= event.title %></h2>
+        <p><strong><%= event.location.address %></strong></p>
+      </div>
+      <div class="card-product-info-grid pt-1">
+        <div>
+          <%= image_tag "farley.jpg" %>
+        </div>
+        <div class="card-product-infos">
+          <p><%= event.description %></p>
+          <p class="opacity-25 attendee-number text-end">Attendees: <%= event.bookings.count %></p>
+        </div>
+      </div>
+    </div>
+    <%# this links to the specific event %>
+    <%= link_to "", event_path(event), class: "card-link" %>
+  </div>
+<% end %>
