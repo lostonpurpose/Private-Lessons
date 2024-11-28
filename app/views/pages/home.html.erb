@@ -7,7 +7,11 @@
         <p class="mb-2 fw-bold">Check out these FUCKING COOL classes</p>
       </div>
     </div>
-    <div class="mt-4">Check out some upcoming events!</div>
+    <% if current_user && current_user.is_teacher? %>
+      <div class="mt-4">My Classes</div>
+    <% else %>
+      <div class="mt-4">Check out some upcoming events!</div>
+    <% end %>
     <%# iterating through some events %>
     <%= render 'shared/event_card_iteration' %>
   </div>
