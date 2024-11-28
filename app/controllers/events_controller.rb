@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @events = Event.all
     @user = current_user # teacher user organizing this event (= teacher)
     @event = Event.find(params[:id]) # event I identify through show url id
     @bookings = Booking.where(event_id: @event) # bookings list for this event
@@ -28,6 +29,9 @@ class EventsController < ApplicationController
       end
   end
 
+  def edit
+    @event = Event.new(event_params)
+  end
   def update
 
   end

@@ -1,10 +1,9 @@
 <div>
-  <%= link_to "Create class", class: "btn btn-flat" %>
+  <%= link_to "Create class", new_event_path(@events), class: "btn btn-custom" %>
 </div>
+<%= render "/shared/event_card" %>
 <div>
-</div>
-<div>
-  <<%= link_to "Add Video", class: "btn btn-flat" %>>
+  <%= link_to "Add Video", class: "btn btn-custom" %>
 </div>
 <div class="container w-100">
   <div class="row">
@@ -13,14 +12,16 @@
       <div>       <%# Iterating through attending users % %>
         <% @bookings.each do |booking| %>
           <div class="d-flex justify-content-between align-items-center">
-    <div class="d-flex align-items-center" >
-      <%= cl_image_tag(booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered") %>
-      <span><%= booking.user.name %></span>
+            <div class="d-flex align-items-center" >
+              <%= link_to user_path(booking.user) do %>
+                <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
+              <% end %>
+              <span><%= booking.user.name %></span>
+            </div>
+            <span><%= booking.state %></span>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <span><%= booking.state %></span>
   </div>
-<% end %>
-</div>
-</div>
-</div>
 </div>
