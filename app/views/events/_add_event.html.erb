@@ -17,9 +17,10 @@
       <%= f.input :capacity %>
       <%= f.input :price %>
       <%= f.association :location %>
+      <%= f.input :description %>
       <!-- Add picture or video upload -->
       <div class="form-group mb-8">
-        <%= f.label :media, "Upload Picture or Video", class: 'mb-3' %>
+        <%= f.label :media, "Upload a Picture", class: 'mb-3' %>
         <%= f.file_field :media, accept: 'image/*, video/*', class: 'form-control' %>
       </div>
       <%= f.submit "Create Class", class: "btn btn-custom my-3 btn-right" %>
