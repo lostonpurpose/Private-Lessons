@@ -5,17 +5,8 @@
   <% if user_signed_in? %>
     <section class="pl-nav-content">
       <ul>
-        <li class="pl-nav-search">
-          <%= form_with url: "/search", method: :get do |f| %>
-            <%= f.search_field :query, placeholder: "Search events" %>
-            <%= f.search_field :location, placeholder: "Location" %>
-            <%= button_tag type: "submit" do %>
-              <%= inline_svg "magnifying-glass-solid.svg", style: "fill: black;" %>
-            <% end %>
-          <% end %>
-        </li>
         <li class="pl-nav-item">
-          <%= link_to "#" do %>
+          <%= link_to "/" do %>
             <%= inline_svg "house-solid.svg", class: "pl-icon" %>
             <p>Home</p>
           <% end %>
@@ -32,6 +23,12 @@
             <p>New Post</p>
           <% end %>
         </li>
+        <li class="pl-nav-item">
+          <%= link_to "#", class: "item-drawer-button" do %>
+            <%= inline_svg "magnifying-glass-solid.svg", class: "pl-icon" %>
+            <p>Search</p>
+          <% end %>
+        </li>
         <li class="pl-dropdown-menu">
             <button class="pl-avatar-frame">
               <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
@@ -44,7 +41,7 @@
       </ul>
     </section>
   <% else %>
-    <%= link_to "Login", new_user_session_path, class: "pl-nav-item pl-btn" %>
+    <%= link_to "Login", new_user_session_path, class: "pl-nav-item pl-btn-login" %>
   <% end %>
 </nav>
 
