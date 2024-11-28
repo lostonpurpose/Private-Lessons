@@ -1,3 +1,11 @@
+<div>
+  <%= link_to "Create class", class: "btn btn-flat" %>
+</div>
+<div>
+</div>
+<div>
+  <<%= link_to "Add Video", class: "btn btn-flat" %>>
+</div>
 <div class="container w-100">
   <div class="row">
     <div class="column">
@@ -5,14 +13,14 @@
       <div>       <%# Iterating through attending users % %>
         <% @bookings.each do |booking| %>
           <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center" >
-              <%= cl_image_tag(booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered") %>
-              <span><%= booking.user.name %></span>
-            </div>
-            <span><%= booking.state %></span>
-          </div>
-        <% end %>
-      </div>
+    <div class="d-flex align-items-center" >
+      <%= cl_image_tag(booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered") %>
+      <span><%= booking.user.name %></span>
     </div>
+    <span><%= booking.state %></span>
   </div>
+<% end %>
+</div>
+</div>
+</div>
 </div>
