@@ -1,0 +1,37 @@
+<% if user_signed_in? %>
+  <nav class="pl-nav pl-bottom-nav">
+    <section class="pl-nav-content">
+      <ul>
+        <li class="pl-nav-item">
+          <%= link_to "#" do %>
+            <%= inline_svg "house-solid.svg", class: "pl-icon" %>
+            <p>Home</p>
+          <% end %>
+        </li>
+        <li class="pl-nav-item">
+          <%= link_to "#" do %>
+            <%= inline_svg "film-solid.svg", class: "pl-icon" %>
+            <p>View Posts</p>
+          <% end %>
+        </li>
+        <li class="pl-nav-item">
+          <%= link_to "#" do %>
+            <%= inline_svg "square-plus-regular.svg", class: "pl-icon" %>
+            <p>New Post</p>
+          <% end %>
+        </li>
+        <li class="pl-nav-item">
+          <%= link_to "#" do %>
+            <%= inline_svg "magnifying-glass-solid.svg", class: "pl-icon" %>
+            <p>Search Events</p>
+          <% end %>
+        </li>
+        <li class="pl-nav-item">
+            <%= link_to "#", class: "pl-avatar-frame" do %>
+              <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
+            <% end %>
+        </li>
+      </ul>
+    </section>
+  </nav>
+<% end %>
