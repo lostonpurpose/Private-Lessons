@@ -4,10 +4,11 @@
       <p class="my-2 d-flex align-items-center fw-bold">Upcoming Events</p>
       <%# Iterating through attending events %>
       <%= render '/shared/event_card_iteration' %>
-      <%= link_to "an event", event_path(@events.first) %>
-      <%= link_to "create event", new_event_path(@events.first) %>
-      <%= link_to "see a user", user_path(@users.last) %>
-      <%= link_to "my dashboard", dashboard_path(current_user) %>
+      <div>
+        <%= link_to "create event", new_event_path %>
+        <%= link_to "see a user", user_path(@users.last) %>
+        <%= link_to "my dashboard", dashboard_path(current_user) %>
+      </div>
     </div>
   </div>
 </div>
