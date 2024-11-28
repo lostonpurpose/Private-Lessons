@@ -12,14 +12,6 @@
     <div class="d-flex justify-content-center"><%= link_to "Log in", new_user_session_path %> </div>
     <div class="mt-4">Check out some upcoming events!</div>
     <%# iterating through some events %>
-    <% @events.each do |event| %>
-      <div class="card-product mt-3">
-        <%= image_tag "farley.jpg" %>
-        <div class="card-product-infos">
-          <h2><%= event.title %></h2>
-          <p><%= event.description %></p>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'shared/event_card_iteration' %>
   </div>
 </div>
