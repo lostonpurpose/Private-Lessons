@@ -1,4 +1,4 @@
-puts "destroy!!!!!!!"
+puts "destroying previous seeds!"
 
 Event.destroy_all
 Booking.destroy_all
@@ -6,7 +6,7 @@ Post.destroy_all
 User.destroy_all
 Location.destroy_all
 
-puts "making locations..."
+puts "making locations... please wait!"
 
 location1 = Location.create(name: "The Wagon", address: "Meguro")
 location2 = Location.create(name: "Grandma's Pumpkin Patch", address: "Akihabara")
@@ -18,7 +18,7 @@ location7 = Location.create(name: "Girls Bar Moemi", address: "Kabukicho")
 
 puts "there are now #{Location.count} locations, nerds..."
 
-puts "making some users"
+puts "making users who can't wait to move their body"
 
 denis = User.create!(name: "Denis", email: "denis@clownpenis.fart", is_teacher: true, description: "I'm a shoe maker for donkeys", password: "123456")
 file = File.open("app/assets/images/denis.jpg")
@@ -55,7 +55,7 @@ file = File.open("app/assets/images/celso1.png")
 celso_student.photo.attach(io: file, filename: "celso1.png", content_type: "image/png")
 celso_student.save
 
-will_student = User.create!(name: "Will", email: "will@email.com", is_teacher: false, description: "Love heels dance since I was 10", password: "123456")
+will_student = User.create!(name: "Will", email: "will@email.com", is_teacher: false, description: "ranked 3rd in Meguro belly dance contest 2020", password: "123456")
 file = File.open("app/assets/images/will.png")
 will_student.photo.attach(io: file, filename: "will.png", content_type: "image/png")
 will_student.save
@@ -65,7 +65,7 @@ file = File.open("app/assets/images/alisa.png")
 alisa_student.photo.attach(io: file, filename: "alisa.png", content_type: "image/png")
 alisa_student.save
 
-bear_student = User.create!(name: "A forest dweller", email: "bear@honey.com", is_teacher: false, description: "Does you has honey?", password: "123456")
+bear_student = User.create!(name: "kumamon", email: "bear@honey.com", is_teacher: false, description: "Does you has honey?", password: "123456")
 file = File.open("app/assets/images/bear.jpg")
 bear_student.photo.attach(io: file, filename: "bear.jpg", content_type: "image/jpg")
 bear_student.save
@@ -94,24 +94,15 @@ puts "there are now #{Event.count} events as well"
 puts "cool. so. how about some bookings..."
 
 users = [stuart_student, doug_student, celso_student, will_student, alisa_student, denis, mitsuki, anri]
-events = [event1, event2, event3]
+events = [event1, event2, event3, event4, event5, event6, event7, event8, event9]
 states = ["pending", "paid", "unpaid"]
 
-selected_event = events.sample
-selected_user = users.sample
-selected_state = states.sample
-
-loop_times = 0
-while loop_times < 20
-  selected_event = events.sample
-  selected_user = users.sample
-  selected_state = states.sample
-  # date1 = DateTime.new(2024, 12, 3, 18, rand(1..59), 0)
-  # date2 = DateTime.new(2024, 12, 3, 19, rand(1..59), 0)
-  # user1 = User.all.sample
-  # event = Event.where.not(user: user1).sample
-  Booking.create!(state: selected_state, checkout_session_id: "an id", event: selected_event, user: selected_user)
-  loop_times += 1
+events.each do |event|
+  selected_users = users.sample(4)
+    selected_users.each do |user|
+    selected_state = states.sample
+    Booking.create!(state: selected_state, checkout_session_id: "indecypherable id", event: event, user: user)
+  end
 end
 
 puts "there are now #{Booking.count} bookings as well now as well, too"
