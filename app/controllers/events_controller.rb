@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @events = Event.all
     @user = current_user # teacher user organizing this event (= teacher)
     @event = Event.find(params[:id]) # event I identify through show url id
     @bookings = Booking.where(event_id: @event) # bookings list for this event
@@ -26,6 +27,19 @@ class EventsController < ApplicationController
       else
         render 'new', status: :unprocessable_entity
       end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to event_path(@event)
+    else
+      render 'new', status: :unprocessable_entity
+    end
   end
 
   private
