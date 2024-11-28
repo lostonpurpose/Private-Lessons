@@ -28,6 +28,6 @@ export default class extends Controller {
       const selectedDate = selectedDates[0];
       selectedDate.setMinutes(selectedDate.getMinutes() + 90); // Add 90 minutes
       this.endTarget._flatpickr.setDate(selectedDate);
+    }
   }
-}
 }
