@@ -15,9 +15,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Select a video file then click update button.
-          <%= simple_form_for @event do |f| %>
-            <%= f.input :video, as: :file %>
+          <%# Select a video file then click update button. %>
+          <%= simple_form_for @event, html: { multipart: true } do |f| %>
+            <%= f.input :video, as: :file, label: "Upload Video" %>
             <%= f.submit "Upload Video", class: "btn btn-custom my-3" %>
           <% end %>
         </div>
@@ -48,4 +48,15 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container w-100 mt-5 d-flex justify-content-center">
+  <% if @event.video.attached? %>
+    <div class="text-center">
+      <p>Your video has been saved.</p>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <p>No videos yet.</p>
+    </div>
+  <% end %>
 </div>
