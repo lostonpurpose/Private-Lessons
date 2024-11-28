@@ -1,26 +1,28 @@
-<div class="container d-flex justify-content-center" data-controller="datepicker">
-  <%= simple_form_for @event do |f| %>
-    <%= f.input :title %>
-    <!-- Manually adding datetime-local input for start_date -->
-    <div class="form-group">
-      <%= f.input :start_date,
+<div class="container d-flex justify-content-center">
+  <div class="col-12 col-sm-10 col-md-8 col-lg-6 custom-form-container" data-controller="datepicker">
+    <%= simple_form_for @event do |f| %>
+      <%= f.input :title %>
+      <!-- Manually adding datetime-local input for start_date -->
+      <div class="form-group">
+        <%= f.input :start_date,
             as: :string,
             input_html: { data: { datepicker_target: "start" } } %>
-    </div>
-    <!-- Manually adding datetime-local input for end_date -->
-    <div class="form-group">
-      <%= f.input :end_date,
+      </div>
+      <!-- Manually adding datetime-local input for end_date -->
+      <div class="form-group">
+        <%= f.input :end_date,
             as: :string,
             input_html: { data: { datepicker_target: "end" } } %>
-    </div>
-    <%= f.input :capacity %>
-    <%= f.input :price %>
-    <%= f.association :location %>
-    <!-- Add picture or video upload -->
-    <div class="form-group mb-8">
-      <%= f.label :media, "Upload Picture or Video", class: 'mb-3' %>
-      <%= f.file_field :media, accept: 'image/*, video/*', class: 'form-control' %>
-    </div>
-    <%= f.submit "Create Class", class: "btn btn-custom my-3 btn-right" %>
-  <% end %>
+      </div>
+      <%= f.input :capacity %>
+      <%= f.input :price %>
+      <%= f.association :location %>
+      <!-- Add picture or video upload -->
+      <div class="form-group mb-8">
+        <%= f.label :media, "Upload Picture or Video", class: 'mb-3' %>
+        <%= f.file_field :media, accept: 'image/*, video/*', class: 'form-control' %>
+      </div>
+      <%= f.submit "Create Class", class: "btn btn-custom my-3 btn-right" %>
+    <% end %>
+  </div>
 </div>

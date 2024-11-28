@@ -1,0 +1,11 @@
+.custom-form-container {
+  width: 80%;  /* Adjust this value as needed */
+  margin: 0 auto;  /* Center the form */
+}
+
+/* Make the form wider on small screens */
+@media (max-width: 768px) {
+  .custom-form-container {
+    width: 90%;  /* Make the form take up 90% of the screen width on smartphones */
+  }
+}
