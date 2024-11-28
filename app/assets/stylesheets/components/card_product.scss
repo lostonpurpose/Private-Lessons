@@ -2,13 +2,13 @@
     overflow: hidden;
     height: 100px;
     background: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
     // display: grid;
     grid-template-columns: 190px auto;
     align-items: end;
-
-
     position: relative;
+    border: 1px solid #DBCFE8;
+    border-radius: 3px;
   }
   
   .card-product-info-grid {
@@ -18,8 +18,8 @@
 
 
   .card-product img {
-    height: 50px;
-    width: 85px;
+    height: 60px;
+    width: 90px;
     object-fit: cover;
     border-radius: 4px;
     // margin-bottom: 6px;
@@ -56,7 +56,9 @@
     padding-right: 12px;
     padding-left: 12px;
     padding-top: 0px;
-
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
   }
   
   .card-product .card-product-infos p {
@@ -64,4 +66,12 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
