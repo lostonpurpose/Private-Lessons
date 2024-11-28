@@ -77,3 +77,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Custom Adds
+gem "inline_svg"

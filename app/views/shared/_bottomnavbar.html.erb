@@ -1,8 +1,5 @@
-<nav class="pl-nav pl-top-nav">
-  <%= link_to "#" do %>
-    <%= inline_svg "pl_logo.svg", class: "pl-logo" %>
-  <% end %>
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <nav class="pl-nav pl-bottom-nav">
     <section class="pl-nav-content">
       <ul>
         <li class="pl-nav-item">
@@ -12,9 +9,9 @@
           <% end %>
         </li>
         <li class="pl-nav-item">
-          <%= link_to "#" do %>
+          <%= link_to "/posts" do %>
             <%= inline_svg "film-solid.svg", class: "pl-icon" %>
-            <p>Posts</p>
+            <p>View Posts</p>
           <% end %>
         </li>
         <li class="pl-nav-item">
@@ -24,23 +21,17 @@
           <% end %>
         </li>
         <li class="pl-nav-item">
-          <%= link_to "#", class: "item-drawer-button" do %>
+          <%= link_to "#" do %>
             <%= inline_svg "magnifying-glass-solid.svg", class: "pl-icon" %>
-            <p>Search</p>
+            <p>Search Events</p>
           <% end %>
         </li>
-        <li class="pl-dropdown-menu">
-            <button class="pl-avatar-frame">
+        <li class="pl-nav-item">
+            <%= link_to user_path(@user), class: "pl-avatar-frame" do %>
               <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
-            </button>
-            <div class="pl-dropdown-content">
-              <%= link_to "Profile", user_path(@user) %>
-              <%= link_to "Log Out", destroy_user_session_path, data: {turbo_method: :delete} %>
-            </div>
+            <% end %>
         </li>
       </ul>
     </section>
-  <% else %>
-    <%= link_to "Login", new_user_session_path, class: "pl-nav-item pl-btn-login" %>
-  <% end %>
-</nav>
+  </nav>
+<% end %>

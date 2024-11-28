@@ -1,0 +1,7 @@
+<div class="container d-flex justify-content-center">
+  <%# <% @event = record %>
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Upload your video", class: "btn btn-custom my-3" %>
+  <% end %>
+</div>
