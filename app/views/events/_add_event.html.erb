@@ -1,62 +1,26 @@
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center" data-controller="datepicker">
   <%= simple_form_for @event do |f| %>
     <%= f.input :title %>
     <!-- Manually adding datetime-local input for start_date -->
     <div class="form-group">
-      <%= f.label :start_date %>
-      <%= f.object.start_date.present? ? f.object.start_date.to_datetime.strftime('%Y-%m-%dT%H:%M') : "" %>
-      <%= f.text_field :start_date, type: 'datetime-local', class: 'form-control', id: 'start_date' %>
+      <%= f.input :start_date,
+            as: :string,
+            input_html: { data: { datepicker_target: "start" } } %>
     </div>
     <!-- Manually adding datetime-local input for end_date -->
     <div class="form-group">
-      <%= f.label :end_date %>
-      <%= f.object.end_date.present? ? f.object.end_date.to_datetime.strftime('%Y-%m-%dT%H:%M') : "" %>
-      <%= f.text_field :end_date, type: 'datetime-local', class: 'form-control', id: 'end_date' %>
+      <%= f.input :end_date,
+            as: :string,
+            input_html: { data: { datepicker_target: "end" } } %>
     </div>
     <%= f.input :capacity %>
     <%= f.input :price %>
     <%= f.association :location %>
     <!-- Add picture or video upload -->
-    <div class="form-group">
-      <%= f.label :media, "Upload Picture or Video" %>
+    <div class="form-group mb-8">
+      <%= f.label :media, "Upload Picture or Video", class: 'mb-3' %>
       <%= f.file_field :media, accept: 'image/*, video/*', class: 'form-control' %>
-      <small class="form-text text-muted">You can upload an image or a video.</small>
     </div>
-    <%= f.submit "Create Event", class: "btn btn-custom my-3" %>
+    <%= f.submit "Create Class", class: "btn btn-custom my-3 btn-right" %>
   <% end %>
 </div>
-<!-- JavaScript to update the end_date based on start_date -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const startDateInput = document.getElementById('start_date');
-    const endDateInput = document.getElementById('end_date');
-
-    // Function to update the end date
-    function updateEndDate() {
-      const startDate = new Date(startDateInput.value);
-
-      if (!isNaN(startDate)) {
-        // Add 1.5 hours (1 hour 30 minutes) to the start date
-        startDate.setMinutes(startDate.getMinutes() + 90); // 1.5 hours = 90 minutes
-
-        // Ensure that the time is formatted correctly for the datetime-local input
-        const year = startDate.getFullYear();
-        const month = String(startDate.getMonth() + 1).padStart(2, '0'); // months are 0-indexed
-        const day = String(startDate.getDate()).padStart(2, '0');
-        const hours = String(startDate.getHours()).padStart(2, '0');
-        const minutes = String(startDate.getMinutes()).padStart(2, '0');
-
-        // Set the value of the end_date field to the updated time
-        endDateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
-      }
-    }
-
-    // Attach event listener to the start date input
-    startDateInput.addEventListener('input', updateEndDate);
-
-    // Initialize the end date if the start date is already filled
-    if (startDateInput.value) {
-      updateEndDate();
-    }
-  });
-</script>
