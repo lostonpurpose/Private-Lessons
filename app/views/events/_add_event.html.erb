@@ -20,7 +20,6 @@
       <%= f.input :description %>
       <!-- Add picture or video upload -->
       <div class="form-group mb-8">
-        <%= f.label :photos, "Upload Picture or Video", class: 'mb-3' %>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       </div>
       <%= f.submit "Create Class", class: "btn btn-custom my-3 btn-right" %>

@@ -1,18 +1,15 @@
-<div class="row">
+<div class="row mx-3">
   <div class="column">
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>);">
-      <div class="container">
-        <h1 class="">Dance! <strong>Prance!</strong></h1>
-        <p>We are dance people for your enjoyment</p>
-        <p class="mb-2 fw-bold">Check out these FUCKING COOL classes</p>
-      </div>
+    <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>
+    <div class="container mt-5">
     </div>
-    <% if current_user && current_user.is_teacher? %>
-      <div class="mt-4">My Classes</div>
-    <% else %>
-      <div class="mt-4">Check out some upcoming events!</div>
-    <% end %>
-    <%# iterating through some events %>
-    <%= render 'shared/event_card_iteration' %>
   </div>
+  <% if current_user && current_user.is_teacher? %>
+    <div class="mt-4 mb-2">My Classes</div>
+  <% else %>
+    <div class="mt-4 mb-2">Check out some upcoming events!</div>
+  <% end %>
+  <%# iterating through some events %>
+  <%= render 'shared/event_card_iteration' %>
+</div>
 </div>
