@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
   def index
     @user = current_user
+    @users = User.all
     @events = Event.all
     @event_bookings = Booking.where(events_id: @events)
     @bookings = @user.bookings

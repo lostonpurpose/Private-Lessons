@@ -3,25 +3,11 @@
     <div class="column">
       <p class="my-2 d-flex align-items-center fw-bold">Upcoming Events</p>
       <%# Iterating through attending events %>
-      <% @events.each do |event| %>
-        <div class="card-product">
-          <div class="d-flex flex-column justify-content-between">
-            <div class="d-flex flex-row justify-content-between p-2">
-              <h2><%= event.title %></h2>
-              <p><strong><%= event.location.address %></strong></p>
-            </div>
-            <div class="card-product-info-grid pt-1">
-              <div>
-                <%= image_tag "farley.jpg" %>
-              </div>
-              <div class="card-product-infos">
-                <p><%= event.description %></p>
-                <p class="opacity-25 attendee-number text-end">Attendees: <%= event.bookings.count %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render '/shared/event_card_iteration' %>
+      <%= link_to "an event", event_path(@events.first) %>
+      <%= link_to "create event", new_event_path(@events.first) %>
+      <%= link_to "see a user", user_path(@users.last) %>
+      <%= link_to "my dashboard", dashboard_path(current_user) %>
     </div>
   </div>
 </div>
