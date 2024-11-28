@@ -32,6 +32,7 @@
 <div class="container w-100">
   <div class="row">
     <div class="column">
+      <%= render "shared/event_card", event: @event %>
       <p class="mb-2 mt-4 d-flex align-items-center fw-bold">Who is joining?</p>
       <div>       <%# Iterating through attending users % %>
         <% @bookings.each do |booking| %>

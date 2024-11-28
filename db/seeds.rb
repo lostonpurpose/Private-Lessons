@@ -12,7 +12,9 @@ location1 = Location.create(name: "The Wagon", address: "Meguro")
 location2 = Location.create(name: "Grandma's Pumpkin Patch", address: "Akihabara")
 location3 = Location.create(name: "Bigfoot's Crotch", address: "Cleveland")
 location4 = Location.create(name: "Shinjuku Noah studio C", address: "Koenji")
-location5 = Location.create(name: "Shinjuku Noah studio A", address: "Shinjuku")
+location5 = Location.create(name: "Alisa's Attic", address: "Nakameguro")
+location6 = Location.create(name: "An Abandoned Mine Shaft", address: "Mine Shaft, USA")
+location7 = Location.create(name: "Girls Bar Moemi", address: "Kabukicho")
 
 puts "there are now #{Location.count} locations, nerds..."
 
@@ -58,7 +60,17 @@ file = File.open("app/assets/images/will.png")
 will_student.photo.attach(io: file, filename: "will.png", content_type: "image/png")
 will_student.save
 
-alisa_student = User.create!(name: "Alisa", email: "alisa@email.com", is_teacher: false, description: "Trying my best okay", password: "123456")
+alisa_student = User.create!(name: "Alisa", email: "alisa@email.com", is_teacher: false, description: "I can code as well too", password: "123456")
+file = File.open("app/assets/images/alisa.png")
+alisa_student.photo.attach(io: file, filename: "alisa.png", content_type: "image/png")
+alisa_student.save
+
+bear_student = User.create!(name: "A forest dweller", email: "bear@honey.com", is_teacher: false, description: "Does you has honey?", password: "123456")
+file = File.open("app/assets/images/alisa.png")
+alisa_student.photo.attach(io: file, filename: "alisa.png", content_type: "image/png")
+alisa_student.save
+
+polish = User.create!(name: "Joshel Dovic", email: "bigjd@clownpenis.fart", is_teacher: false, description: "Very nice!", password: "123456")
 file = File.open("app/assets/images/alisa.png")
 alisa_student.photo.attach(io: file, filename: "alisa.png", content_type: "image/png")
 alisa_student.save
@@ -67,17 +79,21 @@ puts "there are now #{User.count} users, aka losers..."
 
 puts "let's make some events..."
 
-event1 = Event.create!(title: "Professional Prancing", description: "Dainty yet masculine prancing by the world's foremost prancer", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location1)
-event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location4)
-event3 = Event.create!(title: "Prancing 101", description: "Heels dance class for beginners", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location5)
-Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location2)
-Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3)
+event1 = Event.create!(title: "Professional Prancing", description: "Dainty yet masculine prancing by the world's foremost prancer", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location1, capacity: 10, price: 1100)
+event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location4, capacity: 10, price: 800)
+event3 = Event.create!(title: "Prancing 101", description: "Heels dance class for beginners", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location5, capacity: 18, price: 1500)
+Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1000)
+Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 22, price: 900)
+Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1100)
+Event.create!(title: "Donkey Kicking with Alisa", description: "Hi, I'm a professional donkey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 11, price: 1200)
+Event.create!(title: "Phat Rocket", description: "Grab a partner and square dance in a circular fashion", user: anri, start_date: Date.today, end_date: (Date.today + 1), location: location6, capacity: 14, price: 2000)
+Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today, end_date: (Date.today + 1), location: location7, capacity: 15, price: 3000)
 
 puts "there are now #{Event.count} events as well"
 
 puts "cool. so. how about some bookings..."
 
-users = [stuart_student, doug_student, celso_student, will_student, alisa_student, denis]
+users = [stuart_student, doug_student, celso_student, will_student, alisa_student, denis, polish, bear_student]
 events = [event1, event2, event3]
 
 selected_event = events.sample
