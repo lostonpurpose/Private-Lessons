@@ -33,3 +33,7 @@
   color: #543A70; /* Change text color to match the border */
   border: 1px solid #543A70; /* Add border with the same color as the background */
 }
+
+.event-buttons {
+  z-index: 999999;
+}

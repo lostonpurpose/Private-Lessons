@@ -46,7 +46,13 @@ class EventsController < ApplicationController
   def duplicate
     @event = Event.find(params[:id])
     @new_event = @event.dup
-    render :new
+    @new_event.user = current_user  # Make the current user the creator of the new event
+
+    if @new_event.save
+      redirect_to edit_event_path(@new_event), notice: "Event successfully duplicated!"
+    else
+      redirect_to events_path, alert: "Failed to duplicate the event."
+    end
   end
 
   private
