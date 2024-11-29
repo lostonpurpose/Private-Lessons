@@ -42,6 +42,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def duplicate
+    @event = Event.find(params[:id])
+    @new_event = @event.dup
+    render :new
+  end
+
   private
 
   def event_params
