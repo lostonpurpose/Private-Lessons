@@ -1,3 +1,5 @@
+require 'faker'
+
 puts "destroying previous seeds!"
 
 Event.destroy_all
@@ -75,8 +77,19 @@ file = File.open("app/assets/images/bartek.jpg")
 polish.photo.attach(io: file, filename: "bartek.jpg", content_type: "image/jpg")
 polish.save
 
-puts "there are now #{User.count} users, aka losers..."
+users = [stuart_student, doug_student, celso_student, will_teacher, alisa_student, denis, mitsuki, anri]
 
+n = 0
+while n < 20
+  newuser= User.create!(name: "#{Faker::FunnyName.name}", email: "#{Faker::Name.first_name}+#{rand(1..2500)}@mail.com", is_teacher: false, description: "#{Faker::Quote.mitch_hedberg}", password: "123456")
+  file = File.open("app/assets/images/unknownpic.jpg")
+  newuser.photo.attach(io: file, filename: "unknownpic.jpg", content_type: "image/jpg")
+  newuser.save
+  users.push(User.last)
+  n += 1
+end
+
+puts "there are now #{User.count} users, aka losers..."
 puts "let's make some events..."
 
 event1 = Event.create!(title: "Professional Prancing", description: "Dainty yet masculine prancing by the world's foremost prancer", user: denis, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 10, price: 1100)
@@ -85,23 +98,23 @@ event3 = Event.create!(title: "Prancing 101", description: "Heels dance class fo
 event4 = Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1000)
 event5 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 22, price: 900)
 event6 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1100)
-event4 = Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: mitsuki, start_date: Date.today + 6, end_date: (Date.today + 7), location: location2, capacity: 12, price: 1000)
-event5 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
-event6 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: mitsuki, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
-event7 = Event.create!(title: "Donkey Kicking with Alisa", description: "Hi, I'm a professional donkey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 11, price: 1200)
-event8 = Event.create!(title: "Phat Rocket", description: "Grab a partner and square dance in a circular fashion", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
-event9 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today + 8, end_date: (Date.today + 9), location: location7, capacity: 15, price: 3000)
+event7 = Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: mitsuki, start_date: Date.today + 6, end_date: (Date.today + 7), location: location2, capacity: 12, price: 1000)
+event8 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
+event9 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: mitsuki, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
+event10 = Event.create!(title: "Donkey Kicking with Alisa", description: "Hi, I'm a professional donkey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 6, price: 1200)
+event11 = Event.create!(title: "Phat Rocket", description: "Grab a partner and square dance in a circular fashion", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
+event12 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today + 8, end_date: (Date.today + 9), location: location7, capacity: 4, price: 3000)
+event13 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: yann, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
 
 puts "there are now #{Event.count} events as well"
 
 puts "cool. so. how about some bookings..."
 
-users = [stuart_student, doug_student, celso_student, will_teacher, alisa_student, denis, mitsuki, anri]
-events = [event1, event2, event3, event4, event5, event6, event7, event8, event9]
+events = [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10, event11, event12, event13]
 states = ["pending", "paid", "unpaid"]
 
 events.each do |event|
-  random_count = rand(1..15)
+  random_count = rand(12..25)
   selected_users = users.sample(random_count)
     selected_users.each do |user|
     selected_state = states.sample
