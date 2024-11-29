@@ -1,6 +1,8 @@
 .card-product {
     overflow: hidden;
-    height: 110px;
+
+    height: 120px;
+
     background: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     // display: grid;
@@ -10,7 +12,7 @@
     border: 1px solid #DBCFE8;
     border-radius: 3px;
   }
-  
+
   .card-product-info-grid {
     display: grid;
     grid-template-columns: 95px auto;
@@ -25,7 +27,7 @@
     // margin-bottom: 6px;
     margin-left: 8px;
   }
-  
+
   .card-product h2 {
     font-size: 16px;
     font-weight: bold;
@@ -35,7 +37,7 @@
     // margin-left: 4px;
 
   }
-  
+
   .card-product p {
     font-size: 12px;
     line-height: 1.2;
@@ -49,9 +51,9 @@
   .card-product .attendee-number {
     // position: absolute;
     // top: 58px;
-    
+
       }
-  
+
   .card-product .card-product-infos {
     padding-right: 12px;
     padding-left: 12px;
@@ -60,7 +62,7 @@
     display: flex;
     flex-direction: column;
   }
-  
+
   .card-product .card-product-infos p {
     display: -webkit-box !important;
     -webkit-line-clamp: 2;
@@ -76,6 +78,3 @@
     width: 100%;
   }
 
-  .card-product .date-text {
-    font-size: 10px;
-  }
