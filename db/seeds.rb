@@ -82,7 +82,7 @@ puts "let's make some events..."
 event1 = Event.create!(title: "Professional Prancing", description: "Dainty yet masculine prancing by the world's foremost prancer", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location1, capacity: 10, price: 1100)
 event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location4, capacity: 10, price: 800)
 event3 = Event.create!(title: "Prancing 101", description: "Heels dance class for beginners", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location5, capacity: 18, price: 1500)
-event4 = Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1000)
+event4 = Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1000)
 event5 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 22, price: 900)
 event6 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1100)
 event7 = Event.create!(title: "Donkey Kicking with Alisa", description: "Hi, I'm a professional donkey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 11, price: 1200)
@@ -98,7 +98,7 @@ events = [event1, event2, event3, event4, event5, event6, event7, event8, event9
 states = ["pending", "paid", "unpaid"]
 
 events.each do |event|
-  selected_users = users.sample(4)
+  selected_users = users.sample(25)
     selected_users.each do |user|
     selected_state = states.sample
     Booking.create!(state: selected_state, checkout_session_id: "indecypherable id", event: event, user: user)
