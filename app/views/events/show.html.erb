@@ -1,50 +1,84 @@
-<div class="text-end mt-5">
-  <%= link_to "Create class", new_event_path(@events), class: "btn btn-right m-2" %>
-</div>
-<div class="d-flex flex-row-reverse bd-highlight">
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add Video
-  </button>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Video to Event</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <%# Select a video file then click update button. %>
-          <%= simple_form_for @event, html: { multipart: true } do |f| %>
-            <%= f.input :video, as: :file, label: "Upload Video" %>
-            <%= f.submit "Upload Video", class: "btn btn-custom my-3" %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+<div class="container my-5">
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <!-- Button trigger modal -->
+    <!--
+    <button type="button" class="btn btn-custom m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add Video
+    </button>
+    -->
+    <!-- Video Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Video to Event</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Select a video file then click update button.
+            <%= simple_form_for @event do |f| %>
+              <%= f.input :video, as: :file %>
+              <%= f.submit "Upload Video", class: "btn btn-custom my-3" %>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container w-100">
-  <div class="row">
-    <div class="column">
-      <%= render "shared/event_card", event: @event %>
-      <p class="mb-2 mt-4 d-flex align-items-center fw-bold">Who is joining?</p>
-      <div>       <%# Iterating through attending users % %>
-        <% @bookings.each do |booking| %>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center" >
-              <%= link_to user_path(booking.user) do %>
-                <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
-              <% end %>
-              <span><%= booking.user.name %></span>
+  <div class="container w-100">
+    <div class="row">
+      <div class="column">
+        <!-- Event Rendering -->
+        <%= render "shared/event_card", event: @event %>
+        <!-- Booking Button -->
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-custom m-2" data-bs-toggle="modal" data-bs-target="#bookingModal">
+            Book this Class
+          </button>
+        </div>
+        <!-- Booking Modal -->
+        <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="bookingModalLabel">Book <%= @event.title.capitalize %>?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [@event, @new_booking] do |f| %>
+                  <%= f.submit "Pay Now!", class: "btn btn-custom my-3" %>
+                  <%= f.submit "Pay Later!", class: "btn btn-custom my-3" %>
+                <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
             </div>
-            <span><%= booking.state %></span>
           </div>
+        </div>
+
+        <p class="mb-2 mt-4 fw-bold">Who is joining?</p>
+        <% if @bookings.length == 0 %>
+          <p class="mb-2 mt-4">No attendees yet.</p>
         <% end %>
+        <div>       <%# Iterating through attending users % %>
+          <% @bookings.each do |booking| %>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center" >
+                <%= link_to user_path(booking.user) do %>
+                  <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
+                <% end %>
+                <span><%= booking.user.name %></span>
+              </div>
+              <span><%= booking.state %></span>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
