@@ -114,7 +114,8 @@ events = [event1, event2, event3, event4, event5, event6, event7, event8, event9
 states = ["pending", "paid", "unpaid"]
 
 events.each do |event|
-  selected_users = users.sample(25)
+  random_count = rand(12..25)
+  selected_users = users.sample(random_count)
     selected_users.each do |user|
     selected_state = states.sample
     Booking.create!(state: selected_state, checkout_session_id: "indecypherable id", event: event, user: user)
