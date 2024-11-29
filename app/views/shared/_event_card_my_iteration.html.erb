@@ -1,3 +1,26 @@
-<% @bookings.events.each do |event| %>
-  <%= render "shared/event_card", event: event %>
+<% bookings.each do |booking| %>
+  <div class="card-product">
+    <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex flex-row justify-content-between p-2">
+        <h2><%= booking.event.title %></h2>
+        <p class="text-custom"><strong><%= booking.event.location.address %></strong></p>
+      </div>
+      <div class="card-product-info-grid">
+        <div>
+          <% if booking.event.photos.attached? %>
+            <%= cl_image_tag booking.event.photos.first.key %>
+          <% else %>
+            <%= image_tag "sexy_lady.jpg" %>
+          <% end %>
+        </div>
+        <div class="card-product-infos">
+          <p><%= booking.event.description %></p>
+          <p><%= booking.event.start_date %></p>
+          <p class="opacity-25 attendee-number text-end">Attendees: <%= booking.event.bookings.count %></p>
+        </div>
+      </div>
+    </div>
+    <%# this links to the specific@event %>
+    <%= link_to "", event_path(booking.event), class: "card-link" %>
+  </div>
 <% end %>

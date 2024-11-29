@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @bookings = current_user.bookings
-    @events = current_user.events
   end
 
   def edit
