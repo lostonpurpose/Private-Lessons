@@ -1,15 +1,11 @@
-<div class="row mx-3">
-  <div class="column">
-    <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>
-    <div class="container mt-5">
+<div class="container w-100 my-5">
+  <div class="row">
+    <div class="column">
+      <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>
     </div>
-  </div>
-  <% if current_user && current_user.is_teacher? %>
-    <div class="mt-4 mb-2">My Classes</div>
-  <% else %>
     <div class="mt-4 mb-2">Check out some upcoming events!</div>
-  <% end %>
-  <%# iterating through some events %>
-  <%= render 'shared/event_card_iteration' %>
+    <%# iterating through some events %>
+    <%= render 'shared/event_card_iteration' %>
+  </div>
 </div>
 </div>
