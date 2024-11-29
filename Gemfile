@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem 'ostruct'
 # Gemfile
 gem 'cloudinary', '~> 1.16.0'
+gem 'faker'
 
 
 group :development, :test do

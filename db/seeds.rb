@@ -1,3 +1,5 @@
+require 'faker'
+
 puts "destroying previous seeds!"
 
 Event.destroy_all
@@ -75,6 +77,17 @@ file = File.open("app/assets/images/bartek.jpg")
 polish.photo.attach(io: file, filename: "bartek.jpg", content_type: "image/jpg")
 polish.save
 
+users = [stuart_student, doug_student, celso_student, will_teacher, alisa_student, denis, mitsuki, anri]
+
+# n = 0
+# while n < 15
+  user= User.create!(name: "#{Faker::FunnyName.name}", email: "unknown_user#{rand(1..500)}@mail.com", is_teacher: false, description: "#{Faker::Quote.mitch_hedberg}", password: "123456")
+  file = File.open("app/assets/images/unknownpic.jpg")
+  user.photo.attach(io: file, filename: "unknownpic.jpg", content_type: "image/jpg")
+  created_user = user.save
+  users.push(created_user)
+# end
+
 puts "there are now #{User.count} users, aka losers..."
 
 puts "let's make some events..."
@@ -91,13 +104,13 @@ event6 = Event.create!(title: "Slip and Slide", description: "The way of water, 
 event7 = Event.create!(title: "Donkey Kicking with Alisa", description: "Hi, I'm a professional donkey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 11, price: 1200)
 event8 = Event.create!(title: "Phat Rocket", description: "Grab a partner and square dance in a circular fashion", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
 event9 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today + 8, end_date: (Date.today + 9), location: location7, capacity: 15, price: 3000)
+event10 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: yann, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 15, price: 3000)
 
 puts "there are now #{Event.count} events as well"
 
 puts "cool. so. how about some bookings..."
 
-users = [stuart_student, doug_student, celso_student, will_teacher, alisa_student, denis, mitsuki, anri]
-events = [event1, event2, event3, event4, event5, event6, event7, event8, event9]
+events = [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10]
 states = ["pending", "paid", "unpaid"]
 
 events.each do |event|
