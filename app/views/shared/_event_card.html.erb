@@ -1,8 +1,11 @@
 <div class="card-product">
   <div class="d-flex flex-column justify-content-between">
     <div class="d-flex flex-row justify-content-between p-2">
-      <h2><%= event.title %></h2>
-      <p class="text-custom"><strong><%= event.location.address %></strong></p>
+      <div class="d-flex flex-column">
+        <h2><%= event.title %></h2>
+        <p class="justify-content-end date-text"><%= event.start_date.strftime("%B %d, %Y") %></p>
+      </div>
+      <p class="text-custom d-flex justify-content-end"><strong><%= event.location.address %></strong></p>
     </div>
     <div class="card-product-info-grid mb-2">
       <div>
@@ -13,6 +16,7 @@
         <% end %>
       </div>
       <div class="card-product-infos">
+
         <div class="d-flex justify-content-between">
           <p><%= event.start_date %></p>
           <p><%= event.description %></p>
@@ -42,6 +46,7 @@
               <i class="fa-solid fa-sign-in-alt"></i> Login to Book
             <% end %>
           </div>
+
         <% end %>
       </div>
     </div>
