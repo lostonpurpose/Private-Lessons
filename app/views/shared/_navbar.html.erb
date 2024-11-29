@@ -3,6 +3,13 @@
     <%= inline_svg "pl_logo.svg", class: "pl-logo" %>
   <% end %>
   <% if user_signed_in? %>
+    <ul class="pl-nav-btn m-0">
+      <li class="pl-nav-item create-class-item">
+        <%= link_to new_event_path, class: "btn btn-navbar d-flex py-1 me-3" do %>
+          <p>Create Class</p>
+        <% end %>
+      </li>
+    </ul>
     <section class="pl-nav-content">
       <ul>
         <li class="pl-nav-item">
@@ -27,6 +34,11 @@
           <%= link_to "#", class: "item-drawer-button" do %>
             <%= inline_svg "magnifying-glass-solid.svg", class: "pl-icon" %>
             <p>Search</p>
+          <% end %>
+        </li>
+        <li class="pl-nav-item create-class-item">
+          <%= link_to new_event_path, class: "btn btn-navbar" do %>
+            <p>Create Class</p>
           <% end %>
         </li>
         <li class="pl-dropdown-menu">

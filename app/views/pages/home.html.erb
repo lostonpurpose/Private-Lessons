@@ -1,14 +1,11 @@
-<div class="row">
-  <div class="column">
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>);">
-      <div class="container">
-        <h1 class="">Dance! <strong>Prance!</strong></h1>
-        <p>We are dance people for your enjoyment</p>
-        <p class="mb-2 fw-bold">Check out these FUCKING COOL classes</p>
-      </div>
+<div class="container w-100 my-5">
+  <div class="row">
+    <div class="column">
+      <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>
     </div>
-    <div class="mt-4">Check out some upcoming events!</div>
+    <div class="mt-4 mb-2">Check out some upcoming events!</div>
     <%# iterating through some events %>
     <%= render 'shared/event_card_iteration' %>
   </div>
+</div>
 </div>
