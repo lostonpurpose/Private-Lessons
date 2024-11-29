@@ -16,42 +16,16 @@
         <% end %>
       </div>
       <div class="card-product-infos">
-
-        <div class="d-flex justify-content-between">
-          <p><%= event.start_date %></p>
-          <p><%= event.description %></p>
-          <p class="opacity-25 attendee-number text-end">Attendees: <%= event.bookings.count %></p>
-          <% if user_signed_in? %>
-            <div class="event-buttons mt-3" style=" display: flex; justify-content: end;">
-              <% if current_user == event.user %>
-                <!-- Buttons for the event creator (teacher) -->
-                <%= link_to edit_event_path(event), class: "btn btn-primary btn-sm" do %>
-                  <i class="fa-regular fa-pen-to-square"></i>
-                <% end %>
-                <%= link_to duplicate_event_path(event), class: "btn btn-secondary btn-sm" do %>
-                  <i class="fa-regular fa-copy"></i>
-                <% end %>
-              <% else %>
-                <!-- Button for non-creators (attendees) -->
-                <%= link_to new_event_booking_path(event), class: "btn btn-success btn-sm" do %>
-                  <i class="fa-solid fa-calendar-plus"></i> Book Event
-                <% end %>
-              <% end %>
-            </div>
-          </div>
+        <p><%= event.description %></p>
+        <% if event.capacity - event.bookings.count <= 0 %>
+          <p class="opacity-50 attendee-number text-end text-danger">EVENT FULL!</p>
         <% else %>
-          <!-- Button for unauthenticated users -->
-          <div class="event-buttons mt-3">
-            <%= link_to new_user_session_path, class: "btn btn-warning btn-sm" do %>
-              <i class="fa-solid fa-sign-in-alt"></i> Login to Book
-            <% end %>
-          </div>
-
+          <p class="opacity-50 attendee-number text-end text-danger">Spots left: <%= event.capacity - event.bookings.count %></p>
         <% end %>
       </div>
     </div>
+    <!-- Conditional Buttons inside the card -->
+    <!-- Link to show page (this links to the specific event) -->
+    <%= link_to "", event_path(event), class: "card-link" %>
   </div>
-  <!-- Conditional Buttons inside the card -->
-  <!-- Link to show page (this links to the specific event) -->
-  <%= link_to "", event_path(event), class: "card-link" %>
 </div>
