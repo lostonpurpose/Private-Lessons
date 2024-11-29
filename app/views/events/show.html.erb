@@ -1,3 +1,4 @@
+
 <div class="container my-5">
   <div class="d-flex flex-row-reverse bd-highlight">
     <!-- Button trigger modal -->
@@ -24,6 +25,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
+
         </div>
       </div>
     </div>
@@ -80,4 +82,15 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container w-100 mt-5 d-flex justify-content-center">
+  <% if @event.video.attached? %>
+    <div class="text-center">
+      <p>Your video has been saved.</p>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <p>No videos yet.</p>
+    </div>
+  <% end %>
 </div>

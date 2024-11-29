@@ -153,11 +153,14 @@
   display: block;
 }
 
+.pl-nav-btn {
+  display: none;
+}
 
 @media (max-width: 640px) {
   .pl-top-nav {
     height: 50px;
-    justify-content: center;
+    justify-content: space-between;
 
     .pl-logo {
       height: 30px;
@@ -165,6 +168,10 @@
 
     .pl-nav-content {
       display: none;
+    }
+
+    .pl-nav-btn {
+      display: flex;
     }
 
   }
