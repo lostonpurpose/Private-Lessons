@@ -2,11 +2,20 @@
   <div class="row">
     <div class="column">
       <%= image_tag(@user.photo, width: "200px") %>
-    <h2><%= @user.name %></h2>
-    <p><%= @user.description %><p>
+      <h2><%= @user.name %></h2>
+      <p><%= @user.description %>
+        <p>
+          <% if @user == current_user %>
+            <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-gradient" %>
+          </div>
+          <span>My booked classes</span>
+          <% if @bookings.any? %>
+            <%= render "shared/event_card_my_iteration", bookings: @bookings %>
+          <% else %>
+            <span>No classes booked!</span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <% if @user == current_user %>
-  <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-gradient" %>
-  <% end %>
-</div>
+  <div>
