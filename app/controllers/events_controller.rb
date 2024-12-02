@@ -61,7 +61,7 @@ class EventsController < ApplicationController
 
   def search
     if params[:query].present?
-      @events = Event.search_by_title_and_description_and_user_id(params[:query])
+      @events = Event.search_by_title_and_description_and_user(params[:query])
     else
       @events = []
     end

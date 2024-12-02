@@ -13,10 +13,10 @@ class Event < ApplicationRecord
   has_one_attached :video
 
   include PgSearch::Model
-  pg_search_scope :search_by_title_and_description_and_user_id, against: {
-    title: 'A',
-    description: 'B',
-    user_id: 'C'
+  pg_search_scope :search_by_title_and_description_and_user,
+  against: [ :title, :description ],
+  associated_against: {
+    user: [ :name ]
   },
   using: {
     tsearch: { prefix: true }
