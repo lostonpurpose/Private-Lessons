@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :duplicate
     end
     resources :bookings, only: [:create]
+
   end
 
   resources :users, only: [:show, :edit, :update]

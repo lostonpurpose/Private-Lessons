@@ -12,6 +12,10 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def attendees
+    @attendees = Event.find(params[:id]).users
+  end
+
   def show
     @events = Event.all
     @user = current_user # teacher user organizing this event (= teacher)
