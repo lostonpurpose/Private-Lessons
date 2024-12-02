@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#dashboard", as: :dashboard
   get "events/:event_id/bookit", to: "bookings#bookit", as: :bookit
 
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 
   # Defines the root path route ("/")
   # root "posts#index"

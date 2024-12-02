@@ -6,11 +6,10 @@ class BookingsController < ApplicationController
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: @event.title,
-        amount: @event.price,
-        currency: 'jpy',
+        amount: @event.price_cents,
         quantity: 1
       }],
+      raise
       success_url: booking_url(@booking), # Expectation that these two aren't correct
       cancel_url: booking_url(@booking)   # This one too
     )
