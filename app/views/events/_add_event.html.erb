@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center">
-  <div data-controller="datepicker">
+  <div data-controller="datepicker" class="col-12">
     <%= simple_form_for @event do |f| %>
       <%= f.input :title %>
       <!-- Manually adding datetime-local input for start_date -->
@@ -24,7 +24,7 @@
       </div>
       <%= f.submit "Create Class", class: "btn btn-custom my-3 btn-right" %>
     <% end %>
-    <div id="studiolist" data-datepicker-target="list">
+    <div id="studiolist" data-datepicker-target="list" class="container" style="margin-top: 6rem;">
     </div>
   </div>
 </div>
