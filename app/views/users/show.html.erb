@@ -1,13 +1,15 @@
 <div class="container my-5 w-100 bg-white">
   <div class="row">
-    <div class="column">
+    <div class="column mt-2">
       <%= image_tag(@user.photo, width: "200px") %>
-      <h2><%= @user.name %></h2>
+      <hr>
+      <h2 class="mt-4"><strong><%= @user.name %></strong></h2>
       <p><%= @user.description %>
         <p>
           <% if @user == current_user %>
-            <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-gradient" %>
+            <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-custom" %>
           </div>
+          <hr>
           <span>My booked classes</span>
           <% if @bookings.any? %>
             <%= render "shared/event_card_my_iteration", bookings: @bookings %>
