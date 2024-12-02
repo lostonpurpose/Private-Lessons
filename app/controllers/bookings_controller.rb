@@ -8,12 +8,21 @@ class BookingsController < ApplicationController
     @event = Event.find(params[:event_id])
     @booking = Booking.create!(event: @event, user: current_user, state: 'pending')
 
+    price = Stripe::Price.create({
+      unit_amount: @event.price_cents,
+      currency: 'jpy',
+      product_data: {
+        name: @event.title
+      }
+    })
+
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        amount: @event.price_cents,
+        price: price.id,
         quantity: 1
       }],
+      mode: 'payment',
       success_url: booking_url(@booking), # Expectation that these two aren't correct
       cancel_url: booking_url(@booking)   # This one too
     )
