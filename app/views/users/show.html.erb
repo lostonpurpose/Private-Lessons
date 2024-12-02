@@ -15,7 +15,15 @@
         <% else %>
           <span>No classes booked!</span>
         <% end %>
+      <% else %>
+        <hr>
+        <p class="d-flex justify-content-center"><strong><%= @user.name %>'s upcoming classes!</strong></p>
+        <a href="#" class="d-flex justify-content-end align-items-end fw-bold me-2" style="font-size: smaller">Past Events</a>
+        <%= render "shared/event_card_iteration", events: @events.where("start_date >= ?", Date.today) %>
+        <p>Past Events</p>
+        <%= render "shared/event_card_iteration", events: @events.where("start_date < ?", Date.today) %>
       <% end %>
+      <br>
     </div>
   </div>
 </div>
