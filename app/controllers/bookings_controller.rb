@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
         amount: @event.price_cents,
         quantity: 1
       }],
-      raise
       success_url: booking_url(@booking), # Expectation that these two aren't correct
       cancel_url: booking_url(@booking)   # This one too
     )
