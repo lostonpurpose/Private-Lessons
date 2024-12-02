@@ -6,13 +6,13 @@
       <div class="form-group">
         <%= f.input :start_date,
             as: :string,
-            input_html: { data: { datepicker_target: "start" } } %>
+            input_html: { data: { datepicker_target: "start", action: "change->datepicker#fetchStudios" } } %>
       </div>
       <!-- Manually adding datetime-local input for end_date -->
       <div class="form-group">
         <%= f.input :end_date,
             as: :string,
-            input_html: { data: { datepicker_target: "end" } } %>
+            input_html: { data: { datepicker_target: "end", action: "change->datepicker#fetchStudios" } } %>
       </div>
       <%= f.input :capacity %>
       <%= f.input :price %>
@@ -24,5 +24,8 @@
       </div>
       <%= f.submit "Create Class", class: "btn btn-custom my-3 btn-right" %>
     <% end %>
+    <div id="studiolist" data-datepicker-target="list">
+    </div>
   </div>
 </div>
+<!-- app/views/studios/studiolist.html.erb -->

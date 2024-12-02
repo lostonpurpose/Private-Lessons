@@ -10,6 +10,13 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    if params[:start_time].present? && params[:end_time].present?
+      @studiolist = StudioFetcher.fetch_studiolist(params[:start_time], params[:end_time])
+      @studiolist ||= []
+      respond_to do |format|
+        format.json { render partial: "events/locations", locals: { studiolist: @studiolist }, formats: [:html]}
+      end
+    end
   end
 
   def show

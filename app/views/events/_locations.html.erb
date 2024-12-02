@@ -1,0 +1,9 @@
+<h1>Studio List</h1>
+<% studiolist.each do |studio| %>
+  <p><strong>Studio Name:</strong> <%= studio["m_stu"]["studio_name"] %></p>
+  <p><strong>Size:</strong> <%= studio["m_stu"]["size"] %></p>
+  <p><strong>Image Path:</strong> <%= studio["m_stu"]["image_path"] %></p>
+  <p><strong>Web Branch Name:</strong> <%= studio["m_bra"]["web_branch_name"] %></p>
+  <p><strong>Price:</strong> <%= studio["0"]["price"] %></p>
+  <hr>
+<% end %>
