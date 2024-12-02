@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row py4">
+    <div class="col-md-3">
+      <% if @event.photos.attached? %>
+        <%= cl_image_tag event.photos.first.key %>
+      <% else %>
+        <%= image_tag "sexy_lady.jpg" %>
+      <% end %>
+    </div>
+    <div class="col">
+      <h1>Checkout Summary</h1>
+      <p>Booking spot in <strong><%= @event.title.capitalize %></strong> for <strong><%= humanized_money_with_symbol @event.price %></strong></p>
+      <button id="pay" class="btn btn-custom my-3">Pay</button>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @booking.checkout_session_id %>'
+          });
+        });
+      </script>
+    </div class="col">
+  </div>
+</div>

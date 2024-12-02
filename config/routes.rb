@@ -16,13 +16,16 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
-  resources :bookings, only: [:index, :destroy]
+  resources :bookings, only: [:index, :destroy] do
+    resources :payments, only: [:new]
+  end
 
   resources :posts, only: :create do
     resources :comments, only: :create
   end
 
   get "/dashboard", to: "users#dashboard", as: :dashboard
+  get "events/:event_id/bookit", to: "bookings#bookit", as: :bookit
 
 
   # Defines the root path route ("/")

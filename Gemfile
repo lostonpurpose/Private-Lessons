@@ -81,3 +81,6 @@ end
 
 # Custom Adds
 gem "inline_svg"
+gem "money-rails"
+gem "stripe"
+gem "stripe_event"
