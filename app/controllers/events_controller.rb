@@ -12,6 +12,10 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def attendees
+    @attendees = Event.find(params[:id]).users
+  end
+
   def show
     @events = Event.all
     @user = current_user # teacher user organizing this event (= teacher)
@@ -52,6 +56,14 @@ class EventsController < ApplicationController
       redirect_to edit_event_path(@new_event), notice: "Event successfully duplicated!"
     else
       redirect_to events_path, alert: "Failed to duplicate the event."
+    end
+  end
+
+  def search
+    if params[:query].present?
+      @events = Event.search_by_title_and_description_and_user(params[:query])
+    else
+      @events = []
     end
   end
 

@@ -12,6 +12,21 @@ class Event < ApplicationRecord
   validates :price, presence: true
   validates :capacity, presence: true
   validates :location, presence: true
+  has_many :bookings, dependent: :destroy
+  has_many :users, through: :bookings
+  has_many_attached :photos
+  has_one_attached :video
+
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_description_and_user,
+  against: [ :title, :description ],
+  associated_against: {
+    user: [ :name ]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 
   monetize :price_cents
+
 end

@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+
+  # def index
+  #   @event = Event.find(params[:event_id])
+  #   @bookings = Booking.where(event_id: @event) # bookings list for this event
+  # end
   def create
     @event = Event.find(params[:event_id])
     @booking = Booking.create!(event: @event, user: current_user, state: 'pending')

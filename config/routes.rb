@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :duplicate
     end
     resources :bookings, only: [:create]
+
   end
 
   resources :users, only: [:show, :edit, :update]
@@ -25,8 +26,10 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard", to: "users#dashboard", as: :dashboard
-  get "events/:event_id/bookit", to: "bookings#bookit", as: :bookit
 
+  get "/search", to: "events#search", as: :search
+
+  get "events/:event_id/bookit", to: "bookings#bookit", as: :bookit
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
   # Defines the root path route ("/")
