@@ -5,19 +5,17 @@
       <hr>
       <h2 class="mt-4"><strong><%= @user.name %></strong></h2>
       <p><%= @user.description %>
-        <p>
-          <% if @user == current_user %>
-            <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-custom" %>
-          </div>
-          <hr>
-          <span>My booked classes</span>
-          <% if @bookings.any? %>
-            <%= render "shared/event_card_my_iteration", bookings: @bookings %>
-          <% else %>
-            <span>No classes booked!</span>
-          <% end %>
+      </p>
+      <% if @user == current_user %>
+        <%= link_to "Edit profile", edit_user_path(current_user), class: "btn btn-custom" %>
+        <hr>
+        <span>My booked classes</span>
+        <% if @bookings.any? %>
+          <%= render "shared/event_card_my_iteration", bookings: @bookings %>
+        <% else %>
+          <span>No classes booked!</span>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-  <div>
+</div>
