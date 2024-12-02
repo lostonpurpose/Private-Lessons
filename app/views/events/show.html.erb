@@ -126,7 +126,7 @@
                   <% end %>
                   <span><%= booking.user.name %></span>
                 </div>
-                <span><%= booking.state %></span>
+                <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
               </div>
             <% end %>
             <div class="d-flex justify-content-between">
@@ -149,7 +149,7 @@
                         <% end %>
                         <span><%= booking.user.name %></span>
                       </div>
-                      <span><%= booking.state %></span>
+                      <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
                     </div>
                   <% end %>
                   <hr>
