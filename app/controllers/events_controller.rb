@@ -17,7 +17,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @events = Event.all
     @user = current_user # teacher user organizing this event (= teacher)
     @event = Event.find(params[:id]) # event I identify through show url id
     @bookings = Booking.where(event_id: @event) # bookings list for this event
