@@ -55,6 +55,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def search
+    if params[:query].present?
+      @events = Event.search_by_title_and_description_and_user_id(params[:query])
+    else
+      @events = []
+    end
+  end
+
   private
 
   def set_event

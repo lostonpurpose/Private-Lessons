@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "users#dashboard", as: :dashboard
 
+  get "/search", to: "events#search", as: :search
 
   # Defines the root path route ("/")
   # root "posts#index"
