@@ -15,8 +15,8 @@
             input_html: { data: { datepicker_target: "end", action: "change->datepicker#fetchStudios" } } %>
       </div>
       <%= f.input :capacity, label:false, input_html: { placeholder: "Capacity..." } %>
-      <%= f.input :price_cents %>
-      <select class="form-select"  name="location_name" data-datepicker-target="locationList">
+      <%= f.input :price %>
+      <select class="form-select mb-3"  name="location_name" data-datepicker-target="locationList">
         <option value="">Choose a location</option>
         <% @locations.each do |name| %>
           <option value="<%= name %>"><%= name %></option>
