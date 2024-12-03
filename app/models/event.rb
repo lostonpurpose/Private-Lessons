@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   validates :title, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :price, presence: true
+  validates :price_cents, presence: true
   validates :capacity, presence: true
   validates :location, presence: true
   has_many :bookings, dependent: :destroy
