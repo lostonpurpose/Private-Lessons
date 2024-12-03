@@ -23,8 +23,8 @@ class BookingsController < ApplicationController
         quantity: 1
       }],
       mode: 'payment',
-      success_url: booking_url(@booking), # Expectation that these two aren't correct
-      cancel_url: booking_url(@booking)   # This one too
+      success_url: event_url(@event), # Expectation that these two aren't correct
+      cancel_url: event_url(@event)   # This one too
     )
 
     @booking.update(checkout_session_id: session.id)
