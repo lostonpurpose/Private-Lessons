@@ -119,8 +119,10 @@
               </div>
             <% end %>
             <div class="d-flex justify-content-between">
-              <p class="mt-2">...plus <strong><%= @bookings.count - 3 %></strong> more</p>
-              <a href="", data-bs-toggle="modal", data-bs-target="#attendeesModal", class="mt-2"><strong>See all</strong></a>
+              <% if @bookings.count >= 4 %>
+                <p class="mt-2">...plus <strong><%= @bookings.count - 3 %></strong> more</p>
+                <a href="", data-bs-toggle="modal", data-bs-target="#attendeesModal", class="mt-2"><strong>See all</strong></a>
+              <% end %>
               <%# END of Iterating through attending users % %>
               <!-- All Attendees Modal -->
               <div class="modal fade" id="attendeesModal" tabindex="-1" aria-labelledby="attendeesModalLabel" aria-hidden="true">
