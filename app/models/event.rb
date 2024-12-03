@@ -11,4 +11,8 @@ class Event < ApplicationRecord
   has_many :users, through: :bookings
   has_many_attached :photos
   has_one_attached :video
+
+  def price=(new_price)
+    @price_cents = new_price
+  end
 end

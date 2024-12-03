@@ -15,7 +15,7 @@
             input_html: { data: { datepicker_target: "end", action: "change->datepicker#fetchStudios" } } %>
       </div>
       <%= f.input :capacity %>
-      <%# <%= f.input :price %>
+      <%= f.input :price_cents %>
       <%= f.association :location %>
       <%= f.input :description %>
       <!-- Add picture or video upload -->
