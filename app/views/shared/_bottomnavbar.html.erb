@@ -15,15 +15,15 @@
           <% end %>
         </li>
         <li class="pl-nav-item">
-          <%= link_to "#" do %>
+          <%= link_to search_path do %>
             <%= inline_svg "magnifying-glass-solid.svg", class: "pl-icon" %>
             <p>Search Events</p>
           <% end %>
         </li>
         <li class="pl-nav-item">
-            <%= link_to user_path(current_user), class: "pl-avatar-frame" do %>
-              <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
-            <% end %>
+          <%= link_to user_path(current_user), class: "pl-avatar-frame" do %>
+            <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
+          <% end %>
         </li>
       </ul>
     </section>

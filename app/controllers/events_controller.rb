@@ -10,6 +10,13 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    if params[:start_time].present? && params[:end_time].present?
+      @studiolist = StudioFetcher.fetch_studiolist(params[:start_time], params[:end_time])
+      @studiolist ||= []
+      respond_to do |format|
+        format.json { render partial: "events/locations", locals: { studiolist: @studiolist }, formats: [:html]}
+      end
+    end
   end
 
   def attendees
@@ -73,6 +80,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :capacity, :price, :location_id, :start_date, :end_date, :video, :description, photos: [])
+    params.require(:event).permit(:title, :capacity, :price_cents, :location_id, :start_date, :end_date, :video, :description, photos: [])
   end
 end
