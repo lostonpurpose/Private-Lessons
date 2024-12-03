@@ -1,23 +1,23 @@
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center bg-white w-100">
   <div data-controller="datepicker">
     <%= simple_form_for @event do |f| %>
-      <%= f.input :title %>
+      <%= f.input :title, label:false, input_html: { placeholder: "Title..." } %>
       <!-- Manually adding datetime-local input for start_date -->
       <div class="form-group">
-        <%= f.input :start_date,
-            as: :string,
-            input_html: { data: { datepicker_target: "start" } } %>
+        <%= f.input :start_date, 
+        as: :string,
+        input_html: { data: { datepicker_target: "start" }, placeholder: nil } %>
       </div>
       <!-- Manually adding datetime-local input for end_date -->
       <div class="form-group">
-        <%= f.input :end_date,
-            as: :string,
-            input_html: { data: { datepicker_target: "end" } } %>
+        <%= f.input :end_date, 
+        as: :string, 
+        input_html: { data: { datepicker_target: "end" }, placeholder: nil } %>
       </div>
-      <%= f.input :capacity %>
+      <%= f.input :capacity, label:false, input_html: { placeholder: "Capacity..." } %>
       <%= f.input :price %>
-      <%= f.association :location %>
-      <%= f.input :description %>
+      <%= f.association :location, label:false, include_blank: "Choose a location" %>
+      <%= f.input :description, label:false, input_html: { placeholder: "Describe your event..." } %>
       <!-- Add picture or video upload -->
       <div class="form-group mb-8">
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
