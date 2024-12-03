@@ -1,9 +1,9 @@
 <div class="container my-5 w-100">
   <div class="row">
     <div class="column">
-      <div class="d-flex justify-content-between">
-        <% if current_user.is_teacher? %>
-          <p class="mb-0 mt-2 d-flex align-items-center fw-bold">Teaching</p>
+      <% if current_user.is_teacher %>
+        <div class="d-flex justify-content-between">
+          <p class="mb-0 mt-2 d-flex align-items-center fw-bold text-center">Teaching</p>
           <div class="">
             <a href="new_event_path">
               <p class="text-white bg-custom button-plus d-flex justify-content-center align-items-center my-2"><strong><%= link_to "+", new_event_path, class: "text-white text-decoration-none" %></strong></p>
@@ -12,11 +12,17 @@
         </div>
         <%# Iterating through teaching events %>
         <div class="mt-2">
-          <%= render "shared/event_card_iteration" %>
-        <% else %>
-          <h2 class="b-0 mt-5 d-flex align-items-center text-center">You haven't created any events yet.</h2>
-        <% end %>
-      </div>
+          <%= render "shared/event_card_iteration", events: @events %>
+        </div>
+      <% else %>
+        <h2 class="mb-0 mt-5 d-flex align-items-center fw-bold">You haven't created any events yet.</h2>
+        <div class="">
+          <a href="new_event_path">
+            <p class="text-white bg-custom button-plus d-flex justify-content-center align-items-center my-2"><strong><%= link_to "+", new_event_path, class: "text-white text-decoration-none" %></strong></p>
+          </a>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
