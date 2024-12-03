@@ -1,0 +1,23 @@
+.pending {
+    color: blue;
+    padding: 4px;
+    border-style: solid;
+    border-color: blue;
+    border-radius: 4px;
+}
+
+.paid {
+  color: green;
+  padding: 4px;
+  border-style: solid;
+  border-color: green;
+  border-radius: 4px;
+}
+
+.unpaid {
+  color: red;
+  padding: 4px;
+  border-style: solid;
+  border-color: red;
+  border-radius: 4px;
+}
