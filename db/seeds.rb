@@ -94,11 +94,11 @@ puts "let's make some events..."
 
 event1 = Event.create!(title: "Professional Salsa", description: "Spice up your life with our salsa classes! Enjoy the lively rhythms and passionate movements of this Latin dance.", user: denis, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 10, price: 1100)
 event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: mitsuki, start_date: Date.today + 1, end_date: (Date.today + 2), location: location4, capacity: 10, price: 800)
-event3 = Event.create!(title: "Salsa 101", description: "Salsa class for beginners", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location5, capacity: 18, price: 1500)
-event4 = Event.create!(title: "Salsa 202", description: "Salsa class for beginners", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1000)
+event3 = Event.create!(title: "Salsa 101", description: "Salsa class for beginners", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location5, capacity: 22, price: 1500)
+event4 = Event.create!(title: "Salsa 202", description: "Salsa class for beginners", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 8, price: 1000)
 event5 = Event.create!(title: "Ballroom", description: "Elegance and grace await in our ballroom dance class. Learn classic dances like the waltz, foxtrot, and tango.", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 22, price: 900)
 event6 = Event.create!(title: "Belly Dance", description: "Embrace the art of belly dance! Our classes focus on fluid movements and isolations, perfect for improving core strength and flexibility.
-", user: will_teacher, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1100)
+", user: will_teacher, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 15, price: 1100)
 event7 = Event.create!(title: "Heels advanced", description: "Continue on your heels journey", user: mitsuki, start_date: Date.today + 6, end_date: (Date.today + 7), location: location2, capacity: 12, price: 1000)
 event8 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: will_teacher, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
 event9 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: will_teacher, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
@@ -115,8 +115,10 @@ events = [event1, event2, event3, event4, event5, event6, event7, event8, event9
 states = ["pending", "paid"]
 
 events.each do |event|
-  random_count = rand(6..25)
-  selected_users = users.sample(random_count)
+  random_count = rand(3..25)
+  p event.user.name
+  temp_users = users.reject { |h| h["name"] == "#{event.user.name}" }
+  selected_users = temp_users.sample(random_count)
     selected_users.each do |user|
     selected_state = states.sample
     Booking.create!(state: selected_state, checkout_session_id: "indecypherable id", event: event, user: user)
