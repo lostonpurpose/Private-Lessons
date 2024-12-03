@@ -5,7 +5,7 @@
       <%= image_tag "front.jpg", alt: "sexy_lady",   style: "width: 100%; height: auto;" %>
       <div class="mt-1 mb-2">Suggested lessons for you!</div>
       <%# iterating through some events %>
-      <%= render 'shared/event_card_iteration' %>
+      <%= render 'shared/event_card_iteration', events: @events %>
     </div>
   </div>
 </div>
