@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @locations = Location.all.map(&:name)
     if params[:start_time].present? && params[:end_time].present?
       @studiolist = StudioFetcher.fetch_studiolist(params[:start_time], params[:end_time])
       @studiolist ||= []
@@ -32,6 +33,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @location = Location.find_by(name: params[:location_name])
+    @location ||= Location.create(name: params[:location_name])
+    @event.location = @location
+
     @event.user = current_user
       if @event.save
         redirect_to root_path #need to change this to dashboard
@@ -80,6 +85,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :capacity, :price_cents, :location_id, :start_date, :end_date, :video, :description, photos: [])
+    params.require(:event).permit(:title, :capacity, :price_cents, :start_date, :end_date, :video, :description, photos: [])
   end
 end
