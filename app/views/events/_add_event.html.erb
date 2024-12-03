@@ -15,7 +15,7 @@
             input_html: { data: { datepicker_target: "end", action: "change->datepicker#fetchStudios" } } %>
       </div>
       <%= f.input :capacity, label:false, input_html: { placeholder: "Capacity..." } %>
-      <%= f.input :price %>
+      <%= f.input :price_cents %>
       <%= f.association :location, label:false, include_blank: "Choose a location" %>
       <%= f.input :description, label:false, input_html: { placeholder: "Describe your event..." } %>
       <!-- Add picture or video upload -->
