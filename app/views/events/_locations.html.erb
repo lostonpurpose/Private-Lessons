@@ -1,18 +1,32 @@
-<h1>Studio List</h1>
+<h1>Noah Studio List</h1>
+<div style="border-bottom: 0.5px solid #D8D8D8; margin-bottom: 15px;"></div>
 <% studiolist.each do |studio| %>
   <div class="row">
     <div class="col">
-      <p><strong>Studio Name:</strong> <%= studio["m_stu"]["studio_name"] %>-<%= studio["m_bra"]["web_branch_name"] %></p>
-    </div>
-    <div class="col">
-      <p><strong>Size:</strong> <%= studio["m_stu"]["size"] %></p>
     </div>
     <div class="w-100"></div>
-    <div class="col">
-      <p><strong>Image Path:</strong> <%= studio["m_stu"]["image_path"] %></p>
-    </div>
-    <div class="col">
-      <p><strong>Price:</strong> <%= studio["m_price0"]["price0"] %></p>
+    <div class="row no-padding-right">
+      <!-- Image -->
+      <div class="col-4">
+        <% image_path = studio['m_stu']['image_path'] %>
+        <%
+  base_url = 'https://www.noahstudio.jp'
+
+  # Check if the image_path already has a scheme (http or https)
+  unless image_path.start_with?('http://', 'https://')
+    # If not, prepend the base URL
+    image_path = base_url + image_path
+  end
+%>
+        <p><img src="<%= image_path %>" alt="Studio Image" class="studio-image" /></p>
+      </div>
+      <div class="col-8">
+        <p class="no-margin"><strong>Studio:</strong><%= studio["m_bra"]["web_branch_name"] %>  <%= studio["m_stu"]["studio_name"] %></p>
+        <p class="no-margin"><strong>Size:</strong> <%= (studio["m_stu"]["size"].to_f * 1.653).to_i %> m²</p>
+        <p><strong>Price:</strong> <%= number_to_currency(studio["m_price0"]["price0"], unit: '¥', delimiter: ',', precision: 0) %>/hour</p>
+      </div>
     </div>
   </div>
+  <div style="border-bottom: 0.5px solid #D8D8D8; margin-bottom: 15px;"></div>
+</div>
 <% end %>
