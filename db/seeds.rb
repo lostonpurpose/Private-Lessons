@@ -67,7 +67,7 @@ file = File.open("app/assets/images/alisa.png")
 alisa_student.photo.attach(io: file, filename: "alisa.png", content_type: "image/png")
 alisa_student.save
 
-bear_student = User.create!(name: "kumamon", email: "bear@honey.com", is_teacher: false, description: "Does you has honey?", password: "123456")
+bear_student = User.create!(name: "Kumamon", email: "bear@honey.com", is_teacher: false, description: "Does you has honey?", password: "123456")
 file = File.open("app/assets/images/bear.jpg")
 bear_student.photo.attach(io: file, filename: "bear.jpg", content_type: "image/jpg")
 bear_student.save
@@ -92,29 +92,30 @@ end
 puts "there are now #{User.count} users, aka losers..."
 puts "let's make some events..."
 
-event1 = Event.create!(title: "Professional Prancing", description: "Dainty yet masculine prancing by the world's foremost prancer", user: denis, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 10, price: 1100)
-event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: denis, start_date: Date.today + 1, end_date: (Date.today + 2), location: location4, capacity: 10, price: 800)
-event3 = Event.create!(title: "Prancing 101", description: "Heels dance class for beginners", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location5, capacity: 18, price: 1500)
-event4 = Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1000)
-event5 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 22, price: 900)
-event6 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1100)
-event7 = Event.create!(title: "Prancing 202", description: "Continue on your prancing journey", user: mitsuki, start_date: Date.today + 6, end_date: (Date.today + 7), location: location2, capacity: 12, price: 1000)
-event8 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: mitsuki, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
-event9 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: mitsuki, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
-event10 = Event.create!(title: "Donkey Kicking with Alisa", description: "Hi, I'm a professional donkey", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 6, price: 1200)
-event11 = Event.create!(title: "Phat Rocket", description: "Grab a partner and square dance in a circular fashion", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
+event1 = Event.create!(title: "Professional Salsa", description: "Spice up your life with our salsa classes! Enjoy the lively rhythms and passionate movements of this Latin dance.", user: denis, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 10, price: 1100)
+event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: mitsuki, start_date: Date.today + 1, end_date: (Date.today + 2), location: location4, capacity: 10, price: 800)
+event3 = Event.create!(title: "Salsa 101", description: "Salsa class for beginners", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location5, capacity: 18, price: 1500)
+event4 = Event.create!(title: "Salsa 202", description: "Salsa class for beginners", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1000)
+event5 = Event.create!(title: "Ballroom", description: "Elegance and grace await in our ballroom dance class. Learn classic dances like the waltz, foxtrot, and tango.", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 22, price: 900)
+event6 = Event.create!(title: "Belly Dance", description: "Embrace the art of belly dance! Our classes focus on fluid movements and isolations, perfect for improving core strength and flexibility.
+", user: will_teacher, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 12, price: 1100)
+event7 = Event.create!(title: "Heels advanced", description: "Continue on your heels journey", user: mitsuki, start_date: Date.today + 6, end_date: (Date.today + 7), location: location2, capacity: 12, price: 1000)
+event8 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: will_teacher, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
+event9 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: will_teacher, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
+event10 = Event.create!(title: "Contemporary", description: "Explore creativity and emotion in our contemporary dance class. Combine elements of ballet, modern, and jazz for a unique dance experience.", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 6, price: 1200)
+event11 = Event.create!(title: "Breakdance", description: "Join our breakdance class and master the art of b-boying and b-girling. Learn power moves, freezes, and top rocks in a supportive environment.", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
 event12 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today + 8, end_date: (Date.today + 9), location: location7, capacity: 4, price: 3000)
-event13 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: yann, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
+event13 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
 
 puts "there are now #{Event.count} events as well"
 
 puts "cool. so. how about some bookings..."
 
 events = [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10, event11, event12, event13]
-states = ["pending", "paid", "unpaid"]
+states = ["pending", "paid"]
 
 events.each do |event|
-  random_count = rand(12..25)
+  random_count = rand(6..25)
   selected_users = users.sample(random_count)
     selected_users.each do |user|
     selected_state = states.sample

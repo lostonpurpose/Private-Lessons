@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @bookings = current_user.bookings
+    @events = @user.events
+    # @event = @user.events(params[:id])
   end
 
   def edit

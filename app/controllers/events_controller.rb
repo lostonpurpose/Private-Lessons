@@ -19,8 +19,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def attendees
+    @attendees = Event.find(params[:id]).users
+  end
+
   def show
-    @events = Event.all
     @user = current_user # teacher user organizing this event (= teacher)
     @event = Event.find(params[:id]) # event I identify through show url id
     @bookings = Booking.where(event_id: @event) # bookings list for this event
@@ -59,6 +62,14 @@ class EventsController < ApplicationController
       redirect_to edit_event_path(@new_event), notice: "Event successfully duplicated!"
     else
       redirect_to events_path, alert: "Failed to duplicate the event."
+    end
+  end
+
+  def search
+    if params[:query].present?
+      @events = Event.search_by_title_and_description_and_user(params[:query])
+    else
+      @events = []
     end
   end
 

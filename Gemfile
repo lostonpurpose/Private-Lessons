@@ -54,6 +54,7 @@ gem 'ostruct'
 # Gemfile
 gem 'cloudinary', '~> 1.16.0'
 gem 'faker'
+gem 'pg_search'
 
 
 group :development, :test do
@@ -81,3 +82,6 @@ end
 
 # Custom Adds
 gem "inline_svg"
+gem "money-rails"
+gem "stripe"
+gem "stripe_event"
