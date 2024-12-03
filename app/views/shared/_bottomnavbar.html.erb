@@ -9,15 +9,9 @@
           <% end %>
         </li>
         <li class="pl-nav-item">
-          <%= link_to "/posts" do %>
-            <%= inline_svg "film-solid.svg", class: "pl-icon" %>
-            <p>View Posts</p>
-          <% end %>
-        </li>
-        <li class="pl-nav-item">
-          <%= link_to "#" do %>
+          <%= link_to new_event_path do %>
             <%= inline_svg "square-plus-regular.svg", class: "pl-icon" %>
-            <p>New Post</p>
+            <p>New Event</p>
           <% end %>
         </li>
         <li class="pl-nav-item">
