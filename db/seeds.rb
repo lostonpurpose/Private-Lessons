@@ -67,7 +67,7 @@ file = File.open("app/assets/images/alisa.png")
 alisa_student.photo.attach(io: file, filename: "alisa.png", content_type: "image/png")
 alisa_student.save
 
-bear_student = User.create!(name: "kumamon", email: "bear@honey.com", is_teacher: false, description: "Does you has honey?", password: "123456")
+bear_student = User.create!(name: "Kumamon", email: "bear@honey.com", is_teacher: false, description: "Does you has honey?", password: "123456")
 file = File.open("app/assets/images/bear.jpg")
 bear_student.photo.attach(io: file, filename: "bear.jpg", content_type: "image/jpg")
 bear_student.save
@@ -112,7 +112,7 @@ puts "there are now #{Event.count} events as well"
 puts "cool. so. how about some bookings..."
 
 events = [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10, event11, event12, event13]
-states = ["pending", "paid", "unpaid"]
+states = ["pending", "paid"]
 
 events.each do |event|
   random_count = rand(6..25)

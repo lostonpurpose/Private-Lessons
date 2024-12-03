@@ -105,7 +105,6 @@
             <%= cl_image_tag @event.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
             <%= @event.user.name %>
           <% end %>
-
           <%# Iterating through attending users % %>
           <div>
             <% @bookings.take(3).each do |booking| %>
@@ -122,88 +121,62 @@
             <div class="d-flex justify-content-between">
               <p class="mt-2">...plus <strong><%= @bookings.count - 3 %></strong> more</p>
               <a href="", data-bs-toggle="modal", data-bs-target="#attendeesModal", class="mt-2"><strong>See all</strong></a>
-
-            </div>
-            <span><%= booking.state %></span>
-          </div>
-
-          <%# END of Iterating through attending users % %>
-          <!-- All Attendees Modal -->
-          <div class="modal fade" id="attendeesModal" tabindex="-1" aria-labelledby="attendeesModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <h1 class="modal-title fs-5 my-3 d-flex justify-content-center" id="attendeesModalLabel">All Attendees</h1>
-                  <% @bookings[0...@event.capacity].each do |booking| %>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="d-flex align-items-center" >
-                        <%= link_to user_path(booking.user) do %>
-                          <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
-                        <% end %>
-                        <span><%= booking.user.name %></span>
-                      </div>
-                      <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
-                    </div>
-                  <% end %>
-                  <hr>
-                  <% if @bookings.count > @event.capacity %>
-                    <h1 class="modal-title fs-5 my-3 d-flex justify-content-center" id="attendeesModalLabel">Wait List</h1>
-                    <% @bookings[@event.capacity..].each do |booking| %>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center" >
-                          <%= link_to user_path(booking.user) do %>
-                            <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
-                          <% end %>
-                          <span><%= booking.user.name %></span>
+              <%# END of Iterating through attending users % %>
+              <!-- All Attendees Modal -->
+              <div class="modal fade" id="attendeesModal" tabindex="-1" aria-labelledby="attendeesModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <h1 class="modal-title fs-5 my-3 d-flex justify-content-center" id="attendeesModalLabel">All Attendees</h1>
+                      <% @bookings[0...@event.capacity].each do |booking| %>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="d-flex align-items-center" >
+                            <%= link_to user_path(booking.user) do %>
+                              <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
+                            <% end %>
+                            <span><%= booking.user.name %></span>
+                          </div>
+                          <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
                         </div>
-                        <span><%= booking.state %></span>
-                      </div>
-
-                    <% end %>
-                    <span><%= booking.user.name %></span>
-                  </div>
-                  <span><%= booking.state %></span>
-                </div>
-              <% end %>
-              <hr>
-              <% if @bookings.count > @event.capacity %>
-                <h1 class="modal-title fs-5 my-3 d-flex justify-content-center" id="attendeesModalLabel">Wait List</h1>
-                <% @bookings[@event.capacity..].each do |booking| %>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center" >
-                      <%= link_to user_path(booking.user) do %>
-                        <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
                       <% end %>
-                      <span><%= booking.user.name %></span>
+                      <hr>
+                      <% if @bookings.count > @event.capacity %>
+                        <h1 class="modal-title fs-5 my-3 d-flex justify-content-center" id="attendeesModalLabel">Wait List</h1>
+                        <% @bookings[@event.capacity..].each do |booking| %>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center" >
+                              <%= link_to user_path(booking.user) do %>
+                                <%= cl_image_tag booking.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
+                              <% end %>
+                              <span><%= booking.user.name %></span>
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end %>
                     </div>
-                    <span><%= booking.state %></span>
+                    <!-- Waiting List // All Attendees Modal -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                   </div>
-                <% end %>
-              <% end %>
-            </div>
-            <!-- Waiting List // All Attendees Modal -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                <!-- END of All Attendees Modal -->
+              </div>
             </div>
           </div>
         </div>
-        <!-- END of All Attendees Modal -->
+        <div class="container w-100 mt-5 d-flex justify-content-center">
+          <% if @event.video.attached? %>
+            <div class="text-center">
+              <p>Your video has been saved.</p>
+            </div>
+          <% else %>
+            <div class="text-center">
+              <p>No videos yet.</p>
+            </div>
+          <% end %>
+        </div>
+        <% if @new_event %>
+          <%= render "add_event", event: @new_event %>
+        <% end %>
       </div>
-    </div>
-  </div>
-</div>
-<div class="container w-100 mt-5 d-flex justify-content-center">
-  <% if @event.video.attached? %>
-    <div class="text-center">
-      <p>Your video has been saved.</p>
-    </div>
-  <% else %>
-    <div class="text-center">
-      <p>No videos yet.</p>
-    </div>
-  <% end %>
-</div>
-<% if @new_event %>
-  <%= render "add_event", event: @new_event %>
-<% end %>
-</div>
