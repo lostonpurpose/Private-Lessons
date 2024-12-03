@@ -15,7 +15,7 @@
         </div>
         <div class="card-product-infos">
           <p><%= booking.event.description %></p>
-          <p><%= booking.event.start_datestrftime("%B %d, %Y") %></p>
+          <p><%= booking.event.start_date.strftime("%B %d, %Y") %></p>
           <p class="opacity-25 attendee-number text-end">Attendees: <%= booking.event.bookings.count %></p>
         </div>
       </div>
