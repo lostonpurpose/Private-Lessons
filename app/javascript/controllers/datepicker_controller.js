@@ -14,7 +14,7 @@ export default class extends Controller {
     flatpickr(this.startTarget, {
       enableTime: true,           // Enable time picker
       dateFormat: "Y-m-d H:i",    // Date and time format
- 
+      disableMobile: "true",
       onChange: this.setEndDate.bind(this), // Set end date based on start date
     })
   }
@@ -23,7 +23,7 @@ export default class extends Controller {
     flatpickr(this.endTarget, {
       enableTime: true,           // Enable time picker
       dateFormat: "Y-m-d H:i",    // Date and time format
-
+      disableMobile: "true",
     });
   }
 
