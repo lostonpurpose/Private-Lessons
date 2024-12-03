@@ -16,7 +16,12 @@
       </div>
       <%= f.input :capacity, label:false, input_html: { placeholder: "Capacity..." } %>
       <%= f.input :price_cents %>
-      <%= f.association :location, label:false, include_blank: "Choose a location" %>
+      <select class="form-select"  name="location_name" data-datepicker-target="locationList">
+        <option value="">Choose a location</option>
+        <% @locations.each do |name| %>
+          <option value="<%= name %>"><%= name %></option>
+        <% end %>
+      </select>
       <%= f.input :description, label:false, input_html: { placeholder: "Describe your event..." } %>
       <!-- Add picture or video upload -->
       <div class="form-group mb-8">
