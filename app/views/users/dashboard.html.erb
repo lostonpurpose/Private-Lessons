@@ -17,34 +17,33 @@
         <%#---- financial dashboard starts here ----%>
         <p class="mb-0 mt-2 d-flex align-items-center fw-bold text-center">Earnings</p>
         <br>
-        <div class="">
+        <div class="card-sums">
           <div class="d-flex flex-column">
             <div class="d-flex flex-row justify-content-evenly">
               <%# monthly earnings total: bookings this month sum %>
               <div class="d-flex flex-column align-items-center">
-                <h2>This month</h2>
-                <h2 class="justify-content-en"><%= humanized_money_with_symbol @current_month_events_sum %></h2>
-              </div>
-              <div class="d-flex flex-column align-items-center">
-                <h2>Last month</h2>
-                <h2 class="justify-content-en"><%= humanized_money_with_symbol @last_month_events_sum %></h2>
+                <p class="justify-content-en">This month: <%= humanized_money_with_symbol @current_month_events_sum %>
+                  <p>
+                  </div>
+                  <div class="d-flex flex-column align-items-center">
+                    <p class="justify-content-en">Last month: <%= humanized_money_with_symbol @last_month_events_sum %></p>
+                  </div>
+                </div>
               </div>
             </div>
+            <%# optional: last 3 monthly bookings: sort bookings by date, iterate 3 times to display booking data %>
+            <%# optional: top earning classes: retrieve max key values %>
           </div>
-        </div>
-        <%# optional: last 3 monthly bookings: sort bookings by date, iterate 3 times to display booking data %>
-        <%# optional: top earning classes: retrieve max key values %>
+          <%#---- financial dashboard end here ----%>
+        <% else %>
+          <h2 class="mb-0 mt-5 d-flex align-items-center fw-bold">You haven't created any events yet.</h2>
+          <div class="">
+            <a href="new_event_path">
+              <p class="text-white bg-custom button-plus d-flex justify-content-center align-items-center my-2"><strong><%= link_to "+", new_event_path, class: "text-white text-decoration-none" %></strong></p>
+            </a>
+          </div>
+        <% end %>
       </div>
-      <%#---- financial dashboard end here ----%>
-    <% else %>
-      <h2 class="mb-0 mt-5 d-flex align-items-center fw-bold">You haven't created any events yet.</h2>
-      <div class="">
-        <a href="new_event_path">
-          <p class="text-white bg-custom button-plus d-flex justify-content-center align-items-center my-2"><strong><%= link_to "+", new_event_path, class: "text-white text-decoration-none" %></strong></p>
-        </a>
-      </div>
-    <% end %>
+    </div>
   </div>
-</div>
-</div>
 </div>
