@@ -35,14 +35,42 @@
       <%= render "shared/event_card", event: @event %>
       <% if user_signed_in? %>
         <% if current_user == @event.user %>
-          <div class="event-buttons mt-3" style=" display: flex; justify-content: end;">
+          <div class="event-buttons mt-3 d-flex justify-content-between">
             <!-- Buttons for the event creator (teacher) -->
-            <%= link_to edit_event_path(@event), class: "btn btn-primary btn-sm" do %>
-              <i class="fa-regular fa-pen-to-square"></i>
-            <% end %>
-            <%= link_to duplicate_event_path(@event), class: "btn btn-secondary btn-sm" do %>
-              <i class="fa-regular fa-copy"></i>
-            <% end %>
+            <div>
+              <%= link_to "#", class: "btn btn-success btn-sm", id: "copy-url-button" do %>
+                <i class="fa-solid fa-download"></i> copy url
+              <% end %>
+              <script>
+                document.getElementById('copy-url-button').addEventListener('click', function() {
+                  // Get the current URL
+                  const currentUrl = window.location.href;
+
+                  // Create a temporary textarea element to copy the text
+                  const textarea = document.createElement('textarea');
+                  textarea.value = currentUrl;
+                  document.body.appendChild(textarea);
+
+                  // Select and copy the text
+                  textarea.select();
+                  document.execCommand('copy');
+
+                  // Remove the temporary textarea
+                  document.body.removeChild(textarea);
+
+                  // Optional: Provide feedback to the user
+                  alert('URL copied to clipboard!');
+                });
+              </script>
+            </div>
+            <div>
+              <%= link_to edit_event_path(@event), class: "btn btn-primary btn-sm" do %>
+                <i class="fa-regular fa-pen-to-square"></i>
+              <% end %>
+              <%= link_to duplicate_event_path(@event), class: "btn btn-secondary btn-sm" do %>
+                <i class="fa-regular fa-copy"></i>
+              <% end %>
+            </div>
           </div>
         <% end %>
       <% else %>
