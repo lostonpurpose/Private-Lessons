@@ -3,7 +3,12 @@
   <div class="row">
     <div class="column">
       <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>
-      <div class="mt-1 mb-2 mt-3" style="padding-left:4px;">Suggested lessons for you!</div>
+
+
+      <br>
+      <%= image_tag "front3.jpg", alt: "sexy_lady", style: "width: 100%; height: auto;" %>
+      <p class="d-flex justify-content-center my-4 fs-3 text-custom""><strong>Upcoming classes!</strong></p>
+
       <%# iterating through some events %>
       <%= render 'shared/event_card_iteration', events: @events %>
     </div>
