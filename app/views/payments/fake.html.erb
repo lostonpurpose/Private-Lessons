@@ -1,0 +1,26 @@
+<div class="container my-6">
+  <div class="row py4">
+    <div class="col">
+      <h1>Checkout Summary</h1>
+      <p>Booking spot in <strong><%= @event.title.capitalize %></strong> for <strong><%= humanized_money_with_symbol @event.price %></strong></p>
+      <div class="card-product m-1 mb-3">
+        <div class="d-flex flex-column justify-content-between">
+          <div class="card-product-info-grid mb-2">
+            <div>
+              <% if @event.photos.attached? %>
+                <%= cl_image_tag @event.photos.first.key %>
+              <% else %>
+                <%= image_tag "sexy_lady.jpg" %>
+              <% end %>
+            </div>
+            <div class="card-product-infos">
+              <p><%= @event.description %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= simple_form_for [@event, @new_booking] do |f| %>
+        <%= f.submit "Book and Pay!", class: "btn btn-custom my-3" %>
+      <% end %>    </div class="col">
+  </div>
+</div>
