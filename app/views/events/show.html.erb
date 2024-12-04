@@ -65,7 +65,6 @@
               <div class="modal-body">
                 <%= simple_form_for [@event, @new_booking] do |f| %>
                   <%= f.submit "Pay Now!", class: "btn btn-custom my-3" %>
-                  <%= f.submit "Pay Later!", class: "btn btn-warning my-3" %>
                 <% end %>
               </div>
               <div class="modal-footer">
@@ -119,7 +118,11 @@
               <% end %>
               <span><%= booking.user.name %></span>
             </div>
-            <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
+            <!-- Limit booking state view to only event's creator -->
+            <% if current_user == @event.user %>
+              <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
+            <% end %>
+            <!-- End limit -->
           </div>
         <% end %>
         <div class="d-flex justify-content-between">
@@ -142,7 +145,11 @@
                         <% end %>
                         <span><%= booking.user.name %></span>
                       </div>
-                      <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
+                      <!-- Limit booking state view to only event's creator -->
+                      <% if current_user == @event.user %>
+                        <span class="<%= booking.state %>"><%= booking.state.capitalize %></span>
+                      <% end %>
+                      <!-- End limit -->
                     </div>
                   <% end %>
                   <hr>
