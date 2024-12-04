@@ -36,7 +36,7 @@ export default class extends Controller {
   }
 
   fetchStudios() {
-    const url = `${location.href}?start_time=${this.startTarget.value}&end_time=${this.endTarget.value}`
+    const url = `${location.pathname}?start_time=${this.startTarget.value}&end_time=${this.endTarget.value}`
     fetch(url)
       .then(response=>response.text())
       .then(data => {
