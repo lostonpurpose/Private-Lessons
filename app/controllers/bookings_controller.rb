@@ -6,34 +6,35 @@ class BookingsController < ApplicationController
   # end
   def create
     @event = Event.find(params[:event_id])
-    @booking = Booking.create!(event: @event, user: current_user, state: 'pending')
+    @booking = Booking.create!(event: @event, user: current_user, state: 'paid')
 
-    price = Stripe::Price.create({
-      unit_amount: @event.price_cents,
-      currency: 'jpy',
-      product_data: {
-        name: @event.title
-      }
-    })
+    redirect_to event_path(@event)
 
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      line_items: [{
-        price: price.id,
-        quantity: 1
-      }],
-      mode: 'payment',
-      success_url: event_url(@event), # Expectation that these two aren't correct
-      cancel_url: event_url(@event)   # This one too
-    )
+    # -----STRIPE REMOVED FOR DEMO PURPOSES-----
+    # ------------------------------------------
+    # price = Stripe::Price.create({
+    #   unit_amount: @event.price_cents,
+    #   currency: 'jpy',
+    #   product_data: {
+    #     name: @event.title
+    #   }
+    # })
 
-    @booking.update(checkout_session_id: session.id)
-    redirect_to new_booking_payment_path(@booking)
-  end
+    # session = Stripe::Checkout::Session.create(
+    #   payment_method_types: ['card'],
+    #   line_items: [{
+    #     price: price.id,
+    #     quantity: 1
+    #   }],
+    #   mode: 'payment',
+    #   success_url: event_url(@event), # Expectation that these two aren't correct
+    #   cancel_url: event_url(@event)   # This one too
+    # )
 
-  def bookit
-    @event = Event.find(params[:event_id])
-    @new_booking = Booking.new
+    # @booking.update(checkout_session_id: session.id)
+    # redirect_to new_booking_payment_path(@booking)
+    # ------------------------------------------
+    # -----STRIPE REMOVED FOR DEMO PURPOSES-----
   end
 
 end
