@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#dashboard", as: :dashboard
 
   get "/search", to: "events#search", as: :search
+  get "/events/:event_id/fake", to: "payments#fake", as: :fake
 
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 

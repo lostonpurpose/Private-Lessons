@@ -91,6 +91,9 @@
             </div>
             <div class="d-flex justify-content-between">
               <div class="modal-body">
+                <%= link_to fake_path(@event), class: "btn btn-custom my-3" do %>
+                  <i class="fa-solid fa-sign-in-alt"></i> Book!
+                <% end %>
                 <%= simple_form_for [@event, @new_booking] do |f| %>
                   <%= f.submit "Pay Now!", class: "btn btn-custom my-3" %>
                 <% end %>
