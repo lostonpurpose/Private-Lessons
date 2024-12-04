@@ -30,15 +30,17 @@
         <!-- This first if only shows Buttons if it's the show page -->
         <% if @event %>
           <div class="d-flex justify-content-end align-items-center">
-            <% if event.capacity - event.bookings.count <= 0 %>
-              <button type="button", style="font-size: small", class="btn btn-custom ml-2 mb-0 mr-0" data-bs-toggle="modal" data-bs-target="#waitinglistModal">
-                Join Wait List
-              </button>
-            <% else %>
-              <button type="button", style="font-size: small", class="btn btn-custom ml-2 mb-0 mr-0" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                Book this Class
-              </button>
-            <% end %>
+            <% if @event.user != current_user %> <!-- Only show button if current_user is not the event creator -->
+              <% if event.capacity - event.bookings.count <= 0 %>
+                <button type="button" style="font-size: small" class="btn btn-custom ml-2 mb-0 mr-0" data-bs-toggle="modal" data-bs-target="#waitinglistModal">
+                  Join Wait List
+                </button>
+              <% else %>
+                <button type="button" style="font-size: small" class="btn btn-custom ml-2 mb-0 mr-0" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                  Book this Class
+                </button>
+              <% end %>
+            <% end %> <!-- End of check for event creator -->
           </div>
         <% end %>
       </div>
