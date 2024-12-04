@@ -1,10 +1,10 @@
   <%= image_tag "prance2.jpg", alt: "sexy_lady",   style: "width: 100%; height: auto;" %>
-<div class="container w-100 my-5 bg-white mt-0">
+<div class="container w-100 my-5 mt-0">
   <div class="row">
     <div class="column">
       <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>
       <br>
-      <p class="d-flex justify-content-center my-4 fs-3 text-custom""><strong>Upcoming classes!</strong></p>
+      <p class="d-flex justify-content-center my-3 fs-3 text-custom""><strong>Upcoming classes!</strong></p>
       <%# iterating through some events %>
       <%= render 'shared/event_card_iteration', events: @events %>
     </div>

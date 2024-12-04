@@ -1,4 +1,4 @@
-<div class="card-product m-1 mb-2">
+<div class="card-product m-1 mb-3">
   <div class="d-flex flex-column justify-content-between">
     <div class="d-flex flex-row justify-content-between p-2">
       <div class="d-flex flex-column">
@@ -32,7 +32,7 @@
           <div class="d-flex justify-content-end align-items-center">
             <% if @event.user != current_user %> <!-- Only show button if current_user is not the event creator -->
               <% if @event.bookings.map {|b| b.user_id }.include?(current_user.id) %>
-                <button type="button" style="font-size: small" class="btn btn-success ml-2 mb-0 mr-0">
+                <button type="button" style="font-size: small" class="btn btn-light-purple ml-2 mb-0 mr-0">
                   <strong>Attending!</strong>
                 </button>
               <% elsif event.capacity - event.bookings.count <= 0 %>
