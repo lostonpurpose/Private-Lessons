@@ -3,7 +3,7 @@
     <div class="column">
       <% if current_user.is_teacher %>
         <div class="d-flex justify-content-between">
-          <p class="mb-0 mt-2 d-flex align-items-center fw-bold text-center">Teaching</p>
+          <p class="mb-0 mt-2 d-flex align-items-center fw-bold text-center" style="padding-left:4px;">Classes I'm teaching:</p>
           <div class="">
             <a href="new_event_path">
               <p class="text-white bg-custom button-plus d-flex justify-content-center align-items-center my-2"><strong><%= link_to "+", new_event_path, class: "text-white text-decoration-none" %></strong></p>
