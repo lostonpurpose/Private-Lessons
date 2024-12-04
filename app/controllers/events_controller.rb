@@ -47,6 +47,13 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    if params[:start_time].present? && params[:end_time].present?
+      @studiolist = StudioFetcher.fetch_studiolist(params[:start_time], params[:end_time])
+      @studiolist ||= []
+      respond_to do |format|
+        format.json { render partial: "events/locations", locals: { studiolist: @studiolist }, formats: [:html]}
+      end
+    end
   end
 
   def update
@@ -64,7 +71,7 @@ class EventsController < ApplicationController
     @new_event.user = current_user  # Make the current user the creator of the new event
 
     if @new_event.save
-      redirect_to edit_event_path(@new_event), notice: "Event successfully duplicated!"
+      redirect_to edit_event_path(@new_event, duplicate: true), notice: "Event successfully duplicated!"
     else
       redirect_to events_path, alert: "Failed to duplicate the event."
     end
