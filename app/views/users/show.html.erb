@@ -1,4 +1,4 @@
-<div class="container my-5 w-100 bg-white">
+<div class="container my-5 w-100 bg-white mt-0">
   <div class="row">
     <div class="column mt-2">
       <%= image_tag(@user.photo, width: "200px") %>
@@ -12,13 +12,13 @@
           <%= link_to "My Dashboard", dashboard_path(current_user), class: "btn btn-custom" %>
         </div>
         <hr>
-        <p class="d-flex justify-content-center my-4 fs-3 text-custom""><strong>Your upcoming classes!</strong></p>
+        <p class="d-flex justify-content-center my-4 fs-3 text-custom"><strong>Your upcoming classes!</strong></p>
         <div class="d-flex justify-content-between">
-          <p class="mb-2 fs-6 text-custom""><strong>Teaching:</strong></p>
+          <p class="mb-2 fs-6 text-custom" style="padding-left:4px;"><strong>Classes I'm Teaching:</strong></p>
           <a href="#past-events" class="d-flex justify-content-end align-items-end fw-bold me-2 mb-2" style="font-size: smaller"> <span class="border border-custom p-1">Past Events</span></a>
         </div>
         <%= render "shared/event_card_iteration", events: @events.where("start_date >= ?", Date.today) %>
-        <p class="mb-2 mt-5 fs-6 text-custom""><strong>Attending:</strong></p>
+        <p class="mb-2 mt-5 fs-6 text-custom" style="padding-left:4px;"><strong>Classes I'm Attending:</strong></p>
         <% if @bookings.any? %>
           <%= render "shared/event_card_my_iteration", bookings: @bookings %>
         <% else %>
