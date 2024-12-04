@@ -3,8 +3,8 @@
     <div class="column">
       <%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "alisa.png" %>
       <%= image_tag "prance2.jpg", alt: "sexy_lady",   style: "width: 100%; height: auto;" %>
-      <div class="mt-1 mb-2">Suggested lessons for you!</div>
       <%# iterating through some events %>
+      <div class="mt-1 mb-2 mt-3" style="padding-left:4px;">Suggested lessons for you!</div>
       <%= render 'shared/event_card_iteration', events: @events %>
     </div>
   </div>
