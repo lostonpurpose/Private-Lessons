@@ -93,19 +93,69 @@ puts "there are now #{User.count} users, aka losers..."
 puts "let's make some events..."
 
 event1 = Event.create!(title: "Professional Salsa", description: "Spice up your life with our salsa classes! Enjoy the lively rhythms and passionate movements of this Latin dance.", user: denis, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 10, price: 1100)
+file = File.open("app/assets/images/hh1.jpg")
+event1.photos.attach(io: file, filename: "hh1.jpg", content_type: "image/jpg")
+event1.save
 event2 = Event.create!(title: "Heels Beginners", description: "Delicious Dances - make desserts while twerking", user: mitsuki, start_date: Date.today + 1, end_date: (Date.today + 2), location: location4, capacity: 10, price: 800)
+file = File.open("app/assets/images/hh2.jpg")
+event2.photos.attach(io: file, filename: "hh2.jpg", content_type: "image/jpg")
+event2.save
 event3 = Event.create!(title: "Salsa 101", description: "Salsa class for beginners", user: denis, start_date: Date.today, end_date: (Date.today + 1), location: location5, capacity: 22, price: 1500)
+file = File.open("app/assets/images/hh3.jpg")
+event3.photos.attach(io: file, filename: "hh3.jpg", content_type: "image/jpg")
+event3.save
 event4 = Event.create!(title: "Salsa 202", description: "Salsa class for beginners", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 8, price: 1000)
+file = File.open("app/assets/images/hh4.jpg")
+event4.photos.attach(io: file, filename: "hh4.jpg", content_type: "image/jpg")
+event4.save
 event5 = Event.create!(title: "Ballroom", description: "Elegance and grace await in our ballroom dance class. Learn classic dances like the waltz, foxtrot, and tango.", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 22, price: 900)
-event6 = Event.create!(title: "Belly Dance", description: "Embrace the art of belly dance! Our classes focus on fluid movements and isolations, perfect for improving core strength and flexibility.
-", user: will_teacher, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 15, price: 1100)
+file = File.open("app/assets/images/hh5.jpg")
+event5.photos.attach(io: file, filename: "hh5.jpg", content_type: "image/jpg")
+event5.save
+event6 = Event.create!(title: "Belly Dance", description: "Embrace the art of belly dance! Our classes focus on fluid movements and isolations, perfect for improving core strength and flexibility.", user: will_teacher, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 15, price: 1100)
+file = File.open("app/assets/images/hh6.jpg")
+event6.photos.attach(io: file, filename: "hh6.jpg", content_type: "image/jpg")
+event6.save
 event7 = Event.create!(title: "Heels advanced", description: "Continue on your heels journey", user: mitsuki, start_date: Date.today + 6, end_date: (Date.today + 7), location: location2, capacity: 12, price: 1000)
+file = File.open("app/assets/images/hh7.jpg")
+event7.photos.attach(io: file, filename: "hh7.jpg", content_type: "image/jpg")
+event7.save
 event8 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: will_teacher, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
+file = File.open("app/assets/images/hh8.jpg")
+event8.photos.attach(io: file, filename: "hh8.jpg", content_type: "image/jpg")
+event8.save
 event9 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: will_teacher, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
+file = File.open("app/assets/images/hh9.jpg")
+event9.photos.attach(io: file, filename: "hh9.jpg", content_type: "image/jpg")
+event9.save
 event10 = Event.create!(title: "Contemporary", description: "Explore creativity and emotion in our contemporary dance class. Combine elements of ballet, modern, and jazz for a unique dance experience.", user: mitsuki, start_date: Date.today, end_date: (Date.today + 1), location: location3, capacity: 6, price: 1200)
+file = File.open("app/assets/images/hh10.jpg")
+event10.photos.attach(io: file, filename: "hh10.jpg", content_type: "image/jpg")
+event10.save
 event11 = Event.create!(title: "Breakdance", description: "Join our breakdance class and master the art of b-boying and b-girling. Learn power moves, freezes, and top rocks in a supportive environment.", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
+file = File.open("app/assets/images/hh11.jpg")
+event11.photos.attach(io: file, filename: "hh11.jpg", content_type: "image/jpg")
+event11.save
 event12 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today + 8, end_date: (Date.today + 9), location: location7, capacity: 4, price: 3000)
+file = File.open("app/assets/images/hh12.jpg")
+event12.photos.attach(io: file, filename: "hh12.jpg", content_type: "image/jpg")
+event12.save
 event13 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
+file = File.open("app/assets/images/hh13.jpg")
+event13.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
+event13.save
+event14 = Event.create!(title: "Breakdance", description: "Join our breakdance class and master the art of b-boying and b-girling. Learn power moves, freezes, and top rocks in a supportive environment.", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
+file = File.open("app/assets/images/hh14.jpg")
+event14.photos.attach(io: file, filename: "hh14.jpg", content_type: "image/jpg")
+event14.save
+event15 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today + 8, end_date: (Date.today + 9), location: location7, capacity: 4, price: 3000)
+file = File.open("app/assets/images/hh15.jpg")
+event15.photos.attach(io: file, filename: "hh15.jpg", content_type: "image/jpg")
+event15.save
+event16 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
+file = File.open("app/assets/images/hh16.jpg")
+event16.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
+event13.save
 
 puts "there are now #{Event.count} events as well"
 
