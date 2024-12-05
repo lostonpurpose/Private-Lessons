@@ -1,26 +1,22 @@
 <div class="container my-6">
-  <div class="row py4">
-    <div class="col">
-      <h1>Checkout Summary</h1>
-      <p>Booking spot in <strong><%= @event.title.capitalize %></strong> for <strong><%= humanized_money_with_symbol @event.price %></strong></p>
-      <div class="card-product m-1 mb-3">
-        <div class="d-flex flex-column justify-content-between">
-          <div class="card-product-info-grid mb-2">
-            <div>
-              <% if @event.photos.attached? %>
-                <%= cl_image_tag @event.photos.first.key %>
-              <% else %>
-                <%= image_tag "sexy_lady.jpg" %>
-              <% end %>
-            </div>
-            <div class="card-product-infos">
-              <p><%= @event.description %></p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="col px-3">
+    <!-- SVG Checkmark -->
+    <div class="w-100 mb-5">
+      <svg id="payment-check" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+        <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+        <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+      </svg>
+    </div>
+    <!-- End Checkmark-->
+    <div class="text-center py-4">
+      <h1 class="mb-4">Checkout Summary</h1>
+      <p>Congratulations!</p>
+      <p>You've booked <strong><%= @event.title.capitalize %></strong> for <strong><%= humanized_money_with_symbol @event.price %></strong></p>
+    </div>
+    <div class="d-flex justify-content-center">
       <%= simple_form_for [@event, @new_booking] do |f| %>
-        <%= f.submit "Book and Pay!", class: "btn btn-custom my-3" %>
-      <% end %>    </div class="col">
+        <%= f.submit "Return to Class", class: "btn btn-custom my-3" %>
+      <% end %>
+    </div>
   </div>
 </div>
