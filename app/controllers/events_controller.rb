@@ -47,6 +47,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @locations = Location.all.map(&:name)
     if params[:start_time].present? && params[:end_time].present?
       @studiolist = StudioFetcher.fetch_studiolist(params[:start_time], params[:end_time])
       @studiolist ||= []
@@ -58,6 +59,9 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @location = Location.find_by(name: params[:location_name])
+    @location ||= Location.create(name: params[:location_name])
+    @event.location = @location
     if @event.update(event_params)
       redirect_to event_path(@event)
     else
