@@ -13,12 +13,12 @@
         <p class="d-flex justify-content-center mb-3 fs-5 text-custom border"><strong>Last Month</strong></p>
         <div class="d-flex justify-content-between mb-5">
           <div class="card d-flex flex-column justify-content-end">
-            <h1 class="text-custom-dark"><b><%= @current_month_bookings %></b></h1>
+            <h1 class="text-custom-dark"><b><%= @last_month_bookings %></b></h1>
             <p class="text-custom-dark">Total Bookings</p>
           </div>
           <div class="card d-flex flex-column justify-content-end">
-            <h1 class="text-custom-dark"><b>12</b></h1>
-            <p class="text-custom-dark">万円 Earned</p>
+            <h1 class="text-custom-dark"><b><%= humanized_money_with_symbol @last_month_events_sum %></b></h1>
+            <p class="text-custom-dark">Earned</p>
           </div>
           <div class="card d-flex flex-column justify-content-end align-items-center">
             <%#---- Tallying up students who attended the most ----%>
