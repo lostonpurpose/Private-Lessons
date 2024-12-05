@@ -6,33 +6,47 @@
       Add Video
     </button>
     -->
-    <!-- Here lies the new event showpage! -->
-    <div class="row">
-      <div class="column mt-3">
-        <div class="d-flex justify-content-between pe-3">
-          <h1 class="text-custom-dark"><strong><%= @event.title %></strong></h1>
-          <p class="opacity-50 attendee-number fw-bold text-danger d-flex align-items-center mb-0"><%= @event.capacity - @event.bookings.count %> Spots left!</p>
+    <!-- Video Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Video to Event</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Select a video file then click update button.
+            <%= simple_form_for @event do |f| %>
+              <%= f.input :video, as: :file %>
+              <%= f.submit "Upload Video", class: "btn btn-custom my-3" %>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
-        <div class="d-flex justify-content-between mt-2">
+      </div>
+    </div>
+  </div>
+  <!-- END of Video Modal -->
+  <!-- Here lies the new event showpage! -->
+  <div class="row">
+    <div class="column mt-3">
+      <div class="d-flex justify-content-between pe-3">
+        <h1 class="text-custom-dark"><strong><%= @event.title %></strong></h1>
+        <p class="opacity-50 attendee-number fw-bold text-danger d-flex align-items-center mb-0"><%= @event.capacity - @event.bookings.count %> Spots left!</p>
+      </div>
+      <h3 class="text-custom"><strong>Taught by:</strong></h3>
+      <div>
+        <%= link_to user_path(@event.user) do %>
+          <h3 class="text-custom"><strong><%= cl_image_tag @event.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
+              <%= @event.user.name %></strong></h3>
           <div>
-            <h3 class="text-custom"><strong>Taught by:</strong></h3>
-            <%= link_to user_path(@event.user) do %>
-              <h3 class="text-custom"><strong><%= cl_image_tag @event.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
-                  <%= @event.user.name %></strong></h3>
-            <% end %>
-          </div>
-          <div style="width: 200px; height: 100px; overflow: hidden; border-radius: 8px;">
-            <!-- PHOTO! -->
-            <% if @event.photos.attached? %>
-              <%= cl_image_tag @event.photos.first.key, style: "width: 100%; height: 100%; object-fit: cover; display: block;", alt: "Event Photo" %>
-            <% else %>
-              <%= image_tag "sexy_lady.jpg", style: "width: 100%; height: 100%; object-fit: cover; display: block;", alt: "Default Photo"  %>
-            <% end %>
-          </div>
+          <% end %>
         </div>
-        <p class="mb-0 mt-3"><strong>Time: </strong><%= @event.start_date.strftime("%D at %H:%M %p") %></p>
+        <p class="mb-0"><strong>Time: </strong><%= @event.start_date.strftime("%D at %H:%M %p") %></p>
         <p><strong>Location: </strong><%= @event.location.name %>, <%= @event.location.address %></p>
-        <textarea class="border"style="width: 100%; height: 140px; border-radius: 4px; padding: 8px", name="d" id=""><%= @event.description %></textarea>
+        <textarea style="width: 100%; height: 140px; border-color: text-custom; border-radius: 4px", name="d" id=""><%= @event.description %></textarea>
         <% if user_signed_in? %>
           <% if current_user == @event.user %>
             <div class="event-buttons mt-1 d-flex justify-content-between">
@@ -81,6 +95,8 @@
             <% end %>
           </div>
         <% end %>
+        <!-- Event Rendering -->
+        <%= render "shared/event_card", event: @event %>
         <!-- Booking Modal -->
         <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -129,9 +145,18 @@
         </div>
         <!-- END of Waiting List Modal -->
         <hr class="mt-4">
+        <div class="d-flex justify-content-between">
+          <div>
+            <%= link_to user_path(@event.user) do %>
+              <%= cl_image_tag @event.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
+              <%= @event.user.name %>
+            <% end %>
+          </div>
+          <p style="margin-top: 11px" class="text-custom">Teacher</p>
+        </div>
+        <hr class="mb-4">
         <%# Iterating through attending users % %>
         <div class="d-flex flex-column w-100">
-          <h2 class="text-custom"><strong>Attendees</strong></h2>
           <% @bookings.take(3).each do |booking| %>
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center" >
@@ -216,3 +241,4 @@
       </div>
     </div>
   </div>
+</div>
