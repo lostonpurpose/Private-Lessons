@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     # Attending students this/last mexit
     # onth: based on last/current month events (see above), count bookings for each one and sum
     @current_month_bookings = booking_count(@current_month_events)
+
   end
 
   def show
