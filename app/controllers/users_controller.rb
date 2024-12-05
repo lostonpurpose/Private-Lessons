@@ -66,6 +66,5 @@ class UsersController < ApplicationController
       { user_id => most_attended.flatten.count(user_id)}
     end
     array.sort_by { |element| element.values[0] }.reverse[0..9]
-    raise
   end
 end
