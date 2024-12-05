@@ -62,7 +62,14 @@
     <div class="d-flex flex-column justify-content-between h-100">
       <div class="d-flex justify-content-between">
         <p class="fs-5 fw-bold"><%= event.title.upcase %></h2>
-        <p class="d-flex justify-content-end text-dark" style="font-size:14px"><%= event.location.address %></p>
+        <div class="d-flex gap-2">
+          <i class="fa-regular fa-copy"></i>
+          <% if event.capacity - event.bookings.count <= 0 %>
+            <p class="attendee-number text-dark fs-6"><strong><%= event.capacity %>/<%= event.capacity %></strong></p>
+          <% else %>
+            <p class="attendee-number text-dark fs-6"><%= event.capacity - event.bookings.count %>/<%= event.capacity %></p>
+          <% end %>
+        </div>
       </div>
       <div class="card-product-info-grid mb-2">
         <div>
@@ -80,13 +87,7 @@
               <span class="text-custom">~</span>
               <p class="justify-content-end date-text text-custom"><%= event.end_date.strftime("%H:%M") %></p>
             </div>
-            <div class="d-flex flex-column">
-              <% if event.capacity - event.bookings.count <= 0 %>
-                <p class="opacity-50 attendee-number text-dark"><strong><%= event.capacity %>/<%= event.capacity %></strong></p>
-              <% else %>
-                <p class="opacity-50 attendee-number text-dark"><%= event.capacity - event.bookings.count %>/<%= event.capacity %></p>
-              <% end %>
-            </div>
+            <p class="d-flex text-dark" style="font-size:14px"><%= event.location.address %></p>
           </div>
           <div class="d-flex flex-col align-items-end">
             <div>
