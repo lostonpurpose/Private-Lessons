@@ -10,19 +10,36 @@
             </a>
           </div>
         </div>
-        <p class="d-flex justify-content-center mb-1"><strong>Last Month</strong></p>
+        <p class="d-flex justify-content-center mb-3 fs-5 text-custom border"><strong>Last Month</strong></p>
         <div class="d-flex justify-content-between mb-5">
           <div class="card d-flex flex-column justify-content-end">
             <h1 class="text-custom-dark"><b>87</b></h1>
-            <p class="">Total Students</p>
+            <p class="text-custom-dark">Total Bookings</p>
           </div>
           <div class="card d-flex flex-column justify-content-end">
             <h1 class="text-custom-dark"><b>12</b></h1>
-            <p>万円 Earned</p>
+            <p class="text-custom-dark">万円 Earned</p>
           </div>
-          <div class="card d-flex flex-column justify-content-end">
-            <h1 class="text-custom-dark"><b>:0</b></h1>
-            <p>Most attended</p>
+          <div class="card d-flex flex-column justify-content-end align-items-center">
+            <%#---- Tallying up students who attended the most ----%>
+            <% users_data = [] %>
+            <% @events.each do |event| %>
+              <% event.bookings.each do |booking| %>
+                <% users_data << { name: booking.user.name.split.first, photo: booking.user.photo.key } %>
+              <% end %>
+            <% end %>
+            <% tally_with_photos = users_data.tally %>
+            <% sorted_result = tally_with_photos.sort_by { |_user, count| -count } %> <!-- Sort by count descending -->
+            <div class="mb-2">
+              <% sorted_result.take(3).each do |(user, count)| %>
+                <div class="user-entry d-flex align-items-center">
+                  <%= cl_image_tag user[:photo], class: "avatar-bordered", style: "width: 20px; height: 20px", alt: user[:name] %>
+                  <p class="text-custom-dark m-0"><b> <span><%= user[:name] %>: <%= count %></span></b></p>
+                </div>
+              <% end %>
+            </div>
+            <%#---- END of Tallying up students who attended the most ----%>
+            <p class="text-custom-dark">Top Students</p>
           </div>
         </div>
         <%# Iterating through teaching events %>
