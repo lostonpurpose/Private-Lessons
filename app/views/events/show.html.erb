@@ -141,7 +141,7 @@
       <hr class="mb-4">
       <%# Iterating through attending users % %>
       <div class="d-flex flex-column w-100">
-        <% @bookings.take(3).each do |booking| %>
+        <% @bookings.take(10).each do |booking| %>
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center" >
               <%= link_to user_path(booking.user) do %>
@@ -158,7 +158,7 @@
         <% end %>
         <div class="d-flex justify-content-between">
           <% if @bookings.count >= 4 %>
-            <p class="mt-2">...plus <strong><%= @bookings.count - 3 %></strong> more</p>
+            <p class="mt-2">...plus <strong><%= @bookings.count - 10 %></strong> more</p>
             <a href="", data-bs-toggle="modal", data-bs-target="#attendeesModal", class="mt-2"><strong>See all</strong></a>
           <% end %>
           <%# END of Iterating through attending users % %>
