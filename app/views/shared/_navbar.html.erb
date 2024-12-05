@@ -33,9 +33,9 @@
           <button class="pl-avatar-frame">
             <%# <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag(current_user.photo.key, width: 400, height: 400, crop: :thumb, gravity: :face) %>
+              <%= cl_image_tag(current_user.photo.key, class: "pl-avatar") %>
             <% else %>
-              <%= image_tag "profilepic.jpg" %>
+              <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
             <% end %>
           </button>
           <div class="pl-dropdown-content">
