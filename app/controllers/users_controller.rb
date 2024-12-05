@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     # Most attended students: in a private method, iterate through bookings paid during a given month to sort attendees by frequency
     @most_attended_list_current_month = most_attended(@current_month_events)
     @most_attended_list_last_month = most_attended(@last_month_events)
-    # Attending students this/last month: based on last/current month events (see above), count bookings for each one and sum
+    # Attending students this/last mexit
+    # onth: based on last/current month events (see above), count bookings for each one and sum
+    @current_month_bookings = booking_count(@current_month_events)
   end
 
   def show
@@ -66,5 +68,13 @@ class UsersController < ApplicationController
       { user_id => most_attended.flatten.count(user_id)}
     end
     array.sort_by { |element| element.values[0] }.reverse[0..9]
+  end
+
+  def booking_count(monthly_events)
+    booking_count = 0
+    monthly_events.each do |event|
+      booking_count += event.bookings.count
+    end
+    booking_count
   end
 end
