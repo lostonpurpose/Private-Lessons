@@ -4,11 +4,15 @@ class UsersController < ApplicationController
     require 'time'
     @bookings = current_user.bookings
     @events = current_user.events
-    # look for events for last month and current month, then pass it as an argument to private method iterating on each event to find paid bookings and multiply by event price
+    # Earnings: look for events for last month and current month, then pass it as an argument to private method iterating on each event to find paid bookings and multiply by event price
     @last_month_events = @events.where(start_date: (Time.now.beginning_of_month.prev_month).midnight..(Time.now.beginning_of_month - 1).midnight)
     @last_month_events_sum = monthly_sum(@last_month_events)
     @current_month_events = @events.where(start_date: (Time.now.beginning_of_month).midnight..Time.now)
     @current_month_events_sum = monthly_sum(@current_month_events)
+    # Most attended students: in a private method, iterate through bookings paid during a given month to sort attendees by frequency
+    @most_attended_list_current_month = most_attended(@current_month_events)
+    @most_attended_list_last_month = most_attended(@last_month_events)
+    # Attending students this/last month: based on last/current month events (see above), count bookings for each one and sum
   end
 
   def show
@@ -45,5 +49,22 @@ class UsersController < ApplicationController
       monthly_sum += event_revenue
     end
     monthly_sum
+  end
+
+  def most_attended(monthly_events)
+    most_attended = []
+    monthly_events.each do |event|
+      paid_bookings = event.bookings.where(state: "paid") # paid bookings during a given month
+      event_attendees = []
+      paid_bookings.each do |booking|
+        event_attendee = booking.user_id # extracting user for each booking
+        event_attendees << event_attendee # adding user to attendee list
+      end
+      most_attended << event_attendees
+    end
+    array = most_attended.flatten.uniq.map do |user_id|
+      { user_id => most_attended.flatten.count(user_id)}
+    end
+    array.sort_by { |element| element.values[0] }.reverse[0..9]
   end
 end
