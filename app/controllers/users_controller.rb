@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     @current_month_events = @events.where(start_date: (Time.now.beginning_of_month).midnight..Time.now)
     @current_month_events_sum = monthly_sum(@current_month_events)
     # Most attended students: in a private method, iterate through bookings paid during a given month to sort attendees by frequency
-    @most_attended_list = most_attended(@current_month_events)
+    @most_attended_list_current_month = most_attended(@current_month_events)
+    @most_attended_list_last_month = most_attended(@last_month_events)
     # Attending students this/last month: based on last/current month events (see above), count bookings for each one and sum
   end
 
@@ -61,9 +62,9 @@ class UsersController < ApplicationController
       end
       most_attended << event_attendees
     end
-    attendee_frequency = most_attended.tally
-    raise
-    attendees_sorted_by_frequency = attendee_frequency.sort_by{ |value| [-frequency[value], value]}
-    attendees_sorted_by_frequency
+    array = most_attended.flatten.uniq.map do |user_id|
+      { user_id => most_attended.flatten.count(user_id)}
+    end
+    array.sort_by { |element| element.values[0] }.reverse[0..9]
   end
 end
