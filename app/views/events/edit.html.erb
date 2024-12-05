@@ -16,7 +16,12 @@
       </div>
       <%= f.input :capacity %>
       <%= f.input :price %>
-      <%= f.association :location %>
+      <select class="form-select mb-3"  name="location_name" data-datepicker-target="locationList">
+        <option value="">Choose a location</option>
+        <% @locations.each do |name| %>
+          <option value="<%= name %>"><%= name %></option>
+        <% end %>
+      </select>
       <%= f.input :description %>
       <!-- Add picture or video upload -->
       <div class="form-group mb-8">
@@ -24,9 +29,9 @@
       </div>
       <%=
   if params[:duplicate] # On the edit page for a specific event
-    f.submit "Duplicate Class", class: "btn btn-custom my-3 btn-right"
+    f.submit "Save Class", class: "btn btn-custom my-3 btn-right"
   else
-    f.submit "Edit Class", class: "btn btn-custom my-3 btn-right"
+    f.submit "Save Changes", class: "btn btn-custom my-3 btn-right"
   end
 %>
     <% end %>
