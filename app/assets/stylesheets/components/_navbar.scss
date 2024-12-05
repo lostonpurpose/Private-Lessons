@@ -78,6 +78,11 @@
 .pl-logo {
   fill: $pl-white;
   height: 36px;
+  font-family: $logo-font;
+}
+
+.st0 {
+  font-family: $logo-font !important;
 }
 
 .pl-nav-content ul {
