@@ -2,12 +2,27 @@
   <div class="row">
     <div class="column">
       <% if current_user.is_teacher %>
-        <div class="d-flex justify-content-between">
-          <p class="mb-0 mt-2 d-flex align-items-center fw-bold text-center" style="padding-left:4px;">Classes I'm teaching:</p>
+        <div class="d-flex justify-content-between mt-4 mb-2">
+          <p class="d-flex justify-content-center fs-3 text-custom"><strong>My Dashboard</strong></p>
           <div class="">
             <a href="new_event_path">
-              <p class="text-white bg-custom button-plus d-flex justify-content-center align-items-center my-2"><strong><%= link_to "+", new_event_path, class: "text-white text-decoration-none" %></strong></p>
+              <p class="text-white bg-custom button-plus d-flex justify-content-center align-items-center"><strong><%= link_to "+", new_event_path, class: "text-white text-decoration-none" %></strong></p>
             </a>
+          </div>
+        </div>
+        <%# <div class="container" style="height: 20px; width: 20px background-color: blue"></div> %>
+        <div class="d-flex justify-content-between mb-5">
+          <div class="card d-flex flex-column justify-content-end">
+            <h1 class="text-custom-dark"><b>87</b></h1>
+            <p class="">Total Students</p>
+          </div>
+          <div class="card d-flex flex-column justify-content-end">
+            <h1 class="text-custom-dark"><b>12</b></h1>
+            <p>万円 Earned</p>
+          </div>
+          <div class="card d-flex flex-column justify-content-end">
+            <h1 class="text-custom-dark"><b>:0</b></h1>
+            <p>Most attended</p>
           </div>
         </div>
         <%# Iterating through teaching events %>
