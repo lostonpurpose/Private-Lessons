@@ -22,7 +22,12 @@
         </li>
         <li class="pl-nav-item">
           <%= link_to dashboard_path(current_user), class: "pl-avatar-frame" do %>
-            <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
+            <%# <%= image_tag "profilepic.jpg", class: "pl-avatar" %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag(current_user.photo.key, width: 400, height: 400, crop: :thumb, gravity: :face) %>
+            <% else %>
+              <%= image_tag "profilepic.jpg" %>
+            <% end %>
           <% end %>
         </li>
       </ul>
