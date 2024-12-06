@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     @most_attended_list_current_month = most_attended(@current_month_events)
     @most_attended_list_last_month = most_attended(@last_month_events)
     # Attending students this/last mexit
-    # onth: based on last/current month events (see above), count bookings for each one and sum
+    # based on last/current month events (see above), count bookings for each one and sum
     @current_month_bookings = booking_count(@current_month_events)
-
+    @last_month_bookings = booking_count(@last_month_events)
   end
 
   def show

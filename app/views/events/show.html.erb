@@ -1,41 +1,53 @@
-<div class="container w-100 my-5 bg-white">
-  <div class="d-flex flex-row-reverse bd-highlight">
-    <!-- Button trigger modal -->
-    <!--
-    <button type="button" class="btn btn-custom m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Add Video
-    </button>
-    -->
-    <!-- Video Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Video to Event</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Select a video file then click update button.
-            <%= simple_form_for @event do |f| %>
-              <%= f.input :video, as: :file %>
-              <%= f.submit "Upload Video", class: "btn btn-custom my-3" %>
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+<div class="container w-100 mt-5 bg-white">
+    <!-- Here lies the new event showpage! -->
+  <div class="row px-3">
+    <div class="column mt-3">
+      <div class="d-flex justify-content-between">
+        <h2 class="text-custom-dark"><strong><%= @event.title %></strong></h2>
+        <p class="opacity-50 attendee-number fw-bold text-danger d-flex align-items-center mb-0"><%= @event.capacity - @event.bookings.count %> Spots left!</p>
+      </div>
+      <div class="d-flex justify-content-between mt-2 mb-4">
+        <div>
+          <h4 class="text-custom"><strong>Taught by:</strong></h4>
+          <%= link_to user_path(@event.user) do %>
+            <h4 class="text-custom"><strong><%= cl_image_tag @event.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
+                <%= @event.user.name %></strong></h4>
+          <% end %>
+        </div>
+        <div style="width: 150px; height: 100%; overflow: hidden; border-radius: 8px;">
+          <!-- PHOTO! -->
+          <% if @event.photos.attached? %>
+            <%= cl_image_tag @event.photos.first.key, style: "width: 100%; height: 100%; object-fit: cover; display: block;", alt: "Event Photo" %>
+          <% else %>
+            <%= image_tag "sexy_lady.jpg", style: "width: 100%; height: 100%; object-fit: cover; display: block;", alt: "Default Photo"  %>
+          <% end %>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- END of Video Modal -->
-  <div class="row">
-    <div class="column mt-3">
-      <!-- Event Rendering -->
-      <%= render "shared/event_card", event: @event %>
+      <p class="mb-0 mt-3"><strong>Time: </strong><%= @event.start_date.strftime("%D at %H:%M %p") %></p>
+      <p><strong>Location: </strong><%= @event.location.name %>, <%= @event.location.address %></p>
+      <textarea class="border"style="width: 100%; height: 140px; border-radius: 4px; padding: 8px", name="d" id=""><%= @event.description %></textarea>
+      <% if @event %>
+          <div class="d-flex justify-content-end align-items-center">
+            <% if @event.user != current_user %> <!-- Only show button if current_user is not the event creator -->
+              <% if @event.bookings.map {|b| b.user_id }.include?(current_user.id) %>
+                <button type="button" style="font-size: small" class="btn btn-light-purple ml-2 mb-0 mr-0">
+                  <strong>Attending!</strong>
+                </button>
+              <% elsif @event.capacity - @event.bookings.count <= 0 %>
+                <button type="button" style="font-size: small" class="btn btn-custom ml-2 mb-0 mr-0" data-bs-toggle="modal" data-bs-target="#waitinglistModal">
+                  Join Wait List
+                </button>
+              <% else %>
+                <button type="button" style="font-size: small" class="btn btn-custom ml-2 mb-0 mr-0" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                  Book this Class
+                </button>
+              <% end %>
+            <% end %> <!-- End of check for event creator -->
+          </div>
+        <% end %>
       <% if user_signed_in? %>
         <% if current_user == @event.user %>
-          <div class="event-buttons mt-3 d-flex justify-content-between">
+          <div class="event-buttons mt-1 d-flex justify-content-between">
             <!-- Buttons for the event creator (teacher) -->
             <div>
               <%= link_to "#", class: "btn btn-success btn-sm", id: "copy-url-button" do %>
@@ -129,19 +141,12 @@
       </div>
       <!-- END of Waiting List Modal -->
       <hr class="mt-4">
-      <div class="d-flex justify-content-between">
-        <div>
-          <%= link_to user_path(@event.user) do %>
-            <%= cl_image_tag @event.user.photo.key, class: "avatar-bordered me-2", alt: "avatar-bordered" %>
-            <%= @event.user.name %>
-          <% end %>
-        </div>
-        <p style="margin-top: 11px" class="text-custom">Teacher</p>
-      </div>
-      <hr class="mb-4">
       <%# Iterating through attending users % %>
+
       <div class="d-flex flex-column w-100">
+      <h2 class="text-custom"><strong>Attendees</strong></h2>
         <% @bookings.take(10).each do |booking| %>
+
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center" >
               <%= link_to user_path(booking.user) do %>
@@ -157,8 +162,10 @@
           </div>
         <% end %>
         <div class="d-flex justify-content-between">
+
           <% if @bookings.count >= 4 %>
             <p class="mt-2">...plus <strong><%= @bookings.count - 10 %></strong> more</p>
+
             <a href="", data-bs-toggle="modal", data-bs-target="#attendeesModal", class="mt-2"><strong>See all</strong></a>
           <% end %>
           <%# END of Iterating through attending users % %>
@@ -224,5 +231,4 @@
       <% end %>
     </div>
   </div>
-</div>
 </div>
