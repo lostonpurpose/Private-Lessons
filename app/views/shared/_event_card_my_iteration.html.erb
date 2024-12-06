@@ -10,9 +10,9 @@
         <div class="d-flex flex-column text-end">
           <p class="text-custom d-flex justify-content-end"><strong><%= booking.event.location.address %></strong></p>
           <% if booking.event.capacity - booking.event.bookings.count <= 0 %>
-            <p class="opacity-50 attendee-number text-danger"><strong>EVENT FULL!</strong></p>
+            <p class="opacity-50 attendee-number"><strong>EVENT FULL!</strong></p>
           <% else %>
-            <p class="opacity-50 attendee-number text-end text-danger">Spots left: <%= booking.event.capacity - booking.event.bookings.count %></p>
+            <p class="opacity-50 attendee-number text-end">Spots left: <%= booking.event.capacity - booking.event.bookings.count %></p>
           <% end %>
         </div>
         <!-- END of NEW Conditional for EVENT FULL or BOOKABLE -->
