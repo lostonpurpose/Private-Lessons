@@ -11,19 +11,21 @@
               </a>
             </div>
           </div>
-          <h4 class="d-flex justify-content-left mb-4 fs-5 text-dark border-bottom border-1">Last Month:</h4>
-          <div class="d-flex justify-content-between mb-5 pb-3">
-            <div class="col-4 d-flex flex-column justify-content-between border-end border-1" style="height: 100px;">
-              <div style="text-align: center;">
-                <p class="lh-1 text-dark">Total Bookings</p>
+          <h4 class="d-flex justify-content-left mb-4 pb-2 fs-5 text-dark border-bottom border-1">Last Month:</h4>
+          <div class="d-flex justify-content-between mb-4 pb-3">
+            <div class="col-4 d-flex flex-column justify-content-between align-items-center">
+              <p class="lh-1 text-dark text-center">Total Bookings</p>
+              <div class="flex-grow-1 d-flex align-items-center justify-content-center border-end border-1 w-100" >
+                <h2 class="m-0 text-dark "><b><%= @last_month_bookings %></b></h2>
               </div>
-              <h2 class="m-0 text-dark justify-content-center h-100 d-flex align-items-end"><b><%= @last_month_bookings %></b></h2>
             </div>
-            <div class="col-4 d-flex flex-column border-1">
-              <p class="justify-content-center d-flex align-items-center text-dark text-center" style="height: 56px;">Earnings</p>
-              <h5 class="m-0 text-dark justify-content-center h-100 d-flex align-items-center"><b><%= humanized_money_with_symbol @last_month_events_sum %></b></h5>
+            <div class="col-4 d-flex flex-column justify-content-between align-items-center">
+              <p class=" text-dark text-center">Earnings</p>
+              <div class="flex-grow-1 d-flex align-items-center justify-content-center border-end border-1 w-100" >
+                <h5 class="m-0 text-dark"><b><%= humanized_money_with_symbol @last_month_events_sum %></b></h5>
+              </div>
             </div>
-            <div class="col-4 d-flex flex-column justify-content-between align-items-center border-start border-1 ps-2 style="height: 100px;>
+            <div class="col-4 d-flex flex-column justify-content-between align-items-center ps-2 style="height: 100px;>
               <%#---- Tallying up students who attended the most ----%>
               <% users_data = [] %>
               <% @events.each do |event| %>

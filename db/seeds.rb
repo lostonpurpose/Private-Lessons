@@ -287,6 +287,11 @@ file = File.open("app/assets/images/hh16.jpg")
 event16.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event16.save
 
+event21 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 30, price: 3000)
+file = File.open("app/assets/images/hh13.jpg")
+event21.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
+event21.save
+
 # past events for Alisa
 event17 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 9, end_date: (Date.today - 10), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh16.jpg")
@@ -345,6 +350,17 @@ end
       Booking.create!(state: "paid", event: event, user: user)
       end
     end
+
+    [event21].each do |event|
+      # random_count = rand(3..25)
+      p event.user.name
+      temp_users = users.reject { |h| h["name"] == "#{event.user.name}" }
+      selected_users = temp_users.sample(15)
+        selected_users.each do |user|
+        Booking.create!(state: "paid", event: event, user: user)
+        end
+      end
+
 
 
 puts "there are now #{Booking.count} bookings as well now as well, too"
