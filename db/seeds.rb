@@ -288,42 +288,42 @@ event16.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event16.save
 
 # past events for Alisa
-event17 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 9, end_date: (Date.today - 10), location: location1, capacity: 30, price: 3000)
+event17 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,27,18,30), end_date: DateTime.new(2024,11,27,19,30), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh16.jpg")
 event17.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event17.save
 
-event18 = Event.create!(title: "Polish dance", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 19, end_date: (Date.today - 20), location: location1, capacity: 30, price: 3000)
+event18 = Event.create!(title: "Polish dance", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,16,19,30), end_date: DateTime.new(2024,11,16,20,30), location: location2, capacity: 15, price: 3000)
 file = File.open("app/assets/images/dance.jpg")
 event18.photos.attach(io: file, filename: "dance.jpg", content_type: "image/jpg")
 event18.save
 
-event20 = Event.create!(title: "Heels Advanced", description: "Across the floor exercises and choreography", user: alisa, start_date: Date.today - 20, end_date: (Date.today - 21), location: location1, capacity: 30, price: 3000)
+event20 = Event.create!(title: "Heels Advanced", description: "Across the floor exercises and choreography", user: alisa, start_date: DateTime.new(2024,11,19,19,30), end_date: DateTime.new(2024,11,19,20,30), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh13.jpg")
 event20.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event20.save
 
-event21 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 30, price: 3000)
+event21 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,12,22,18,30), end_date: DateTime.new(2024,12,22,19,30), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh13.jpg")
-event21.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
+event21.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event21.save
 
-event22 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,15,18,30), end_date: DateTime.new(2024,11,15,19,30), location: location2, capacity: 30, price: 3000)
+event22 = Event.create!(title: "Heels Advanced", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,15,18,30), end_date: DateTime.new(2024,11,15,19,30), location: location2, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh13.jpg")
 event22.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event22.save
 
-event23 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,22,18,30), end_date: DateTime.new(2024,11,22,19,30), location: location2, capacity: 30, price: 3000)
+event23 = Event.create!(title: "Heels Advanced", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,22,18,30), end_date: DateTime.new(2024,11,22,19,30), location: location2, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh13.jpg")
 event23.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event23.save
 
-event24 = Event.create!(title: "Polish dance", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,6,19,30), end_date: DateTime.new(2024,11,6,20,30), location: location1, capacity: 15, price: 3000)
+event24 = Event.create!(title: "Polish dance", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,6,19,30), end_date: DateTime.new(2024,11,6,20,30), location: location2, capacity: 15, price: 3000)
 file = File.open("app/assets/images/dance.jpg")
 event24.photos.attach(io: file, filename: "dance.jpg", content_type: "image/jpg")
 event24.save
 
-event25 = Event.create!(title: "Polish dance", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,13,19,30), end_date: DateTime.new(2024,11,13,20,30), location: location1, capacity: 15, price: 3000)
+event25 = Event.create!(title: "Polish dance", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,13,19,30), end_date: DateTime.new(2024,11,13,20,30), location: location2, capacity: 15, price: 3000)
 file = File.open("app/assets/images/dance.jpg")
 event25.photos.attach(io: file, filename: "dance.jpg", content_type: "image/jpg")
 event25.save
