@@ -270,7 +270,7 @@ event12 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, bu
 file = File.open("app/assets/images/hh12.jpg")
 event12.photos.attach(io: file, filename: "hh12.jpg", content_type: "image/jpg")
 event12.save
-event13 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
+event13 = Event.create!(title: "Polka intensive", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
 file = File.open("app/assets/images/hh13.jpg")
 event13.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event13.save
@@ -282,27 +282,26 @@ event15 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, bu
 file = File.open("app/assets/images/hh15.jpg")
 event15.photos.attach(io: file, filename: "hh15.jpg", content_type: "image/jpg")
 event15.save
-event16 = Event.create!(title: "Polka intensive class", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
+event16 = Event.create!(title: "Polka intensive", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
 file = File.open("app/assets/images/hh16.jpg")
 event16.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event16.save
 
-
-
-
 # past events for Alisa
-event17 = Event.create!(title: "Heels Beginner class", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 9, end_date: (Date.today - 10), location: location1, capacity: 30, price: 3000)
+event17 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 9, end_date: (Date.today - 10), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh16.jpg")
 event17.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event17.save
 
 
-event19 = Event.create!(title: "Polish dance class", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 19, end_date: (Date.today - 20), location: location1, capacity: 30, price: 3000)
+event18 = Event.create!(title: "Polish dance", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 19, end_date: (Date.today - 20), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/dance.jpg")
+
+
 event18.photos.attach(io: file, filename: "dance.jpg", content_type: "image/jpg")
 event18.save
 
-event20 = Event.create!(title: "Heels Advanced class", description: "Across the floor exercises and choreography", user: alisa, start_date: Date.today - 20, end_date: (Date.today - 21), location: location1, capacity: 30, price: 3000)
+event20 = Event.create!(title: "Heels Advanced", description: "Across the floor exercises and choreography", user: alisa, start_date: Date.today - 20, end_date: (Date.today - 21), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh13.jpg")
 event20.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event20.save
@@ -312,7 +311,7 @@ puts "there are now #{Event.count} events as well"
 
 puts "cool. so. how about some bookings..."
 
-events = [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10, event11, event12, event13, event18]
+events = [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10, event11, event12, event13]
 states = ["pending", "paid"]
 
 events.each do |event|
@@ -337,7 +336,7 @@ end
     end
   end
 
-  [event19].each do |event|
+  [event18].each do |event|
     # random_count = rand(3..25)
     p event.user.name
     temp_users = users.reject { |h| h["name"] == "#{event.user.name}" }
