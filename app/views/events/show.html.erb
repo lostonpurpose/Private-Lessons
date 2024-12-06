@@ -50,7 +50,7 @@
           <div class="event-buttons mt-1 d-flex justify-content-between">
             <!-- Buttons for the event creator (teacher) -->
             <div>
-              <%= link_to "#", class: "btn btn-success btn-sm", id: "copy-url-button" do %>
+              <%= link_to "#", class: "btn btn-outline-primary btn-sm", id: "copy-url-button" do %>
                 <i class="fa-solid fa-download"></i> copy url
               <% end %>
               <script>
@@ -76,10 +76,10 @@
               </script>
             </div>
             <div>
-              <%= link_to edit_event_path(@event), class: "btn btn-primary btn-sm" do %>
+              <%= link_to edit_event_path(@event), class: "btn btn-outline-primary btn-sm" do %>
                 <i class="fa-regular fa-pen-to-square"></i>
               <% end %>
-              <%= link_to duplicate_event_path(@event), class: "btn btn-secondary btn-sm" do %>
+              <%= link_to duplicate_event_path(@event), class: "btn btn-outline-primary btn-sm" do %>
                 <i class="fa-regular fa-copy"></i>
               <% end %>
             </div>
