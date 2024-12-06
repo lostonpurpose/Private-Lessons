@@ -287,16 +287,15 @@ file = File.open("app/assets/images/hh16.jpg")
 event16.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event16.save
 
-event18 = Event.create!(title: "Heels Beginner class", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 30, price: 3000)
-file = File.open("app/assets/images/hh16.jpg")
-event18.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
-event18.save
+
+
 
 # past events for Alisa
 event17 = Event.create!(title: "Heels Beginner class", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 9, end_date: (Date.today - 10), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/hh16.jpg")
 event17.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event17.save
+
 
 event19 = Event.create!(title: "Polish dance class", description: "Walking techniques and simple choreography", user: alisa, start_date: Date.today - 19, end_date: (Date.today - 20), location: location1, capacity: 30, price: 3000)
 file = File.open("app/assets/images/dance.jpg")
@@ -307,6 +306,7 @@ event20 = Event.create!(title: "Heels Advanced class", description: "Across the 
 file = File.open("app/assets/images/hh13.jpg")
 event20.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event20.save
+
 
 puts "there are now #{Event.count} events as well"
 
@@ -346,5 +346,6 @@ end
       Booking.create!(state: "paid", event: event, user: user)
       end
     end
+
 
 puts "there are now #{Booking.count} bookings as well now as well, too"

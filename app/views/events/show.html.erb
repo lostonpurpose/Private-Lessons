@@ -142,9 +142,11 @@
       <!-- END of Waiting List Modal -->
       <hr class="mt-4">
       <%# Iterating through attending users % %>
-      <div class="d-flex flex-column w-100 mb-6">
-        <h2 class="text-custom"><strong>Attendees</strong></h2>
-        <% @bookings.take(8).each do |booking| %>
+
+      <div class="d-flex flex-column w-100">
+      <h2 class="text-custom"><strong>Attendees</strong></h2>
+        <% @bookings.take(10).each do |booking| %>
+
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center" >
               <%= link_to user_path(booking.user) do %>
@@ -160,8 +162,10 @@
           </div>
         <% end %>
         <div class="d-flex justify-content-between">
-          <% if @bookings.count >= 8 %>
-            <p class="mt-2">...plus <strong><%= @bookings.count - 8 %></strong> more</p>
+
+          <% if @bookings.count >= 4 %>
+            <p class="mt-2">...plus <strong><%= @bookings.count - 10 %></strong> more</p>
+
             <a href="", data-bs-toggle="modal", data-bs-target="#attendeesModal", class="mt-2"><strong>See all</strong></a>
           <% end %>
           <%# END of Iterating through attending users % %>
