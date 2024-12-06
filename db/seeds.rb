@@ -10,12 +10,12 @@ Location.destroy_all
 
 puts "making locations... please wait!"
 
-location1 = Location.create(name: "The Wagon", address: "Meguro")
-location2 = Location.create(name: "Grandma's Pumpkin Patch", address: "Akihabara")
-location3 = Location.create(name: "Bigfoot's Crotch", address: "Cleveland")
-location4 = Location.create(name: "Shinjuku Noah studio C", address: "Koenji")
-location5 = Location.create(name: "Alisa's Attic", address: "Nakameguro")
-location6 = Location.create(name: "An Abandoned Mine Shaft", address: "Abandoned Mine Shaft")
+location1 = Location.create(name: "Noah Studio Meguro", address: "Meguro")
+location2 = Location.create(name: "Noah Studio Akihabara", address: "Akihabara")
+location3 = Location.create(name: "Noah Studio Shinjuku #2", address: "Shinjuku")
+location4 = Location.create(name: "Noah Studio Shinjuku #1", address: "Shinjuku")
+location5 = Location.create(name: "Noah Studio Nakameguro", address: "Nakameguro")
+location6 = Location.create(name: "Noah Studio Ginza", address: "Ginza")
 location7 = Location.create(name: "Girls Bar Moemi", address: "Kabukicho")
 
 puts "there are now #{Location.count} locations, nerds..."
@@ -57,10 +57,10 @@ file = File.open("app/assets/images/celso1.png")
 celso_student.photo.attach(io: file, filename: "celso1.png", content_type: "image/png")
 celso_student.save
 
-will_teacher = User.create!(name: "Will", email: "will@clownpenis.fart", is_teacher: true, description: "ranked 3rd in Meguro belly dance contest 2020, but 1st in 'most sexy dancer'", password: "123456")
+will = User.create!(name: "Will", email: "will@clownpenis.fart", is_teacher: false, description: "ranked 3rd in Meguro belly dance contest 2020, but 1st in 'most sexy dancer'", password: "123456")
 file = File.open("app/assets/images/will.png")
-will_teacher.photo.attach(io: file, filename: "will.png", content_type: "image/png")
-will_teacher.save
+will.photo.attach(io: file, filename: "will.png", content_type: "image/png")
+will.save
 
 alisa = User.create!(name: "Alisa", email: "alisa@email.com", is_teacher: true, description: "I'm a dance teacher and I can code as well too now as well", password: "123456")
 file = File.open("app/assets/images/alisa.png")
@@ -207,7 +207,7 @@ file = File.open("app/assets/images/027.png")
 trouni_student.photo.attach(io: file, filename: "027.png", content_type: "image/png")
 trouni_student.save
 
-users = [aya_student, barry_student, chieri_student, eri_student, gary_student, james_student, noemi_student, sasha_student, trouni_student, phyuphyu_student, mason_student, brian_student, dylan_student, jarod_student, loris_student, claudia_student, toby_student, henry_student, steven_student, christian_student, mark_student, roman_student, adam_student, tristan_student, chafique_student, esteban_student, stuart_student, doug_student, celso_student, will_teacher, alisa, denis, mitsuki, anri, polish, bear_student]
+users = [aya_student, barry_student, chieri_student, eri_student, gary_student, james_student, noemi_student, sasha_student, trouni_student, phyuphyu_student, mason_student, brian_student, dylan_student, jarod_student, loris_student, claudia_student, toby_student, henry_student, steven_student, christian_student, mark_student, roman_student, adam_student, tristan_student, chafique_student, esteban_student, stuart_student, doug_student, celso_student, will, alisa, denis, mitsuki, anri, polish, bear_student]
 
 n = 0
 while n < 10
@@ -247,7 +247,7 @@ file = File.open("app/assets/images/hh5.jpg")
 event5.photos.attach(io: file, filename: "hh5.jpg", content_type: "image/jpg")
 event5.save
 
-event6 = Event.create!(title: "Belly Dance", description: "Embrace the art of belly dance! Our classes focus on fluid movements and isolations, perfect for improving core strength and flexibility.", user: will_teacher, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 15, price: 1100)
+event6 = Event.create!(title: "Belly Dance", description: "Embrace the art of belly dance! Our classes focus on fluid movements and isolations, perfect for improving core strength and flexibility.", user: yann, start_date: Date.today, end_date: (Date.today + 1), location: location2, capacity: 15, price: 1100)
 file = File.open("app/assets/images/hh6.jpg")
 event6.photos.attach(io: file, filename: "hh6.jpg", content_type: "image/jpg")
 event6.save
@@ -256,12 +256,12 @@ event7 = Event.create!(title: "Heels advanced", description: "Continue on your h
 file = File.open("app/assets/images/hh7.jpg")
 event7.photos.attach(io: file, filename: "hh7.jpg", content_type: "image/jpg")
 event7.save
-event8 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: will_teacher, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
+event8 = Event.create!(title: "Pinnacle of Prance", description: "You'll have a goddamn doctorate in prancing, pantsed or no", user: denis, start_date: Date.today + 2, end_date: (Date.today + 3), location: location3, capacity: 22, price: 900)
 file = File.open("app/assets/images/hh8.jpg")
 event8.photos.attach(io: file, filename: "hh8.jpg", content_type: "image/jpg")
 event8.save
 
-event9 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: will_teacher, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
+event9 = Event.create!(title: "Slip and Slide", description: "The way of water, if water was a way", user: yann, start_date: Date.today + 3, end_date: (Date.today + 4), location: location2, capacity: 12, price: 1100)
 file = File.open("app/assets/images/hh9.jpg")
 event9.photos.attach(io: file, filename: "hh9.jpg", content_type: "image/jpg")
 event9.save
@@ -281,26 +281,29 @@ file = File.open("app/assets/images/hh12.jpg")
 event12.photos.attach(io: file, filename: "hh12.jpg", content_type: "image/jpg")
 
 event12.save
-event13 = Event.create!(title: "Polka intensive", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
+event13 = Event.create!(title: "Polka intensive", description: "Free your mind and discover the beauty of Central Europe.", user: denis, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
 file = File.open("app/assets/images/hh13.jpg")
 event13.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event13.save
+
 event14 = Event.create!(title: "Breakdance", description: "Join our breakdance class and master the art of b-boying and b-girling. Learn power moves, freezes, and top rocks in a supportive environment.", user: anri, start_date: Date.today + 5, end_date: (Date.today + 6), location: location6, capacity: 14, price: 2000)
 file = File.open("app/assets/images/hh14.jpg")
 event14.photos.attach(io: file, filename: "hh14.jpg", content_type: "image/jpg")
 event14.save
+
 event15 = Event.create!(title: "Heels Advanced", description: "Like hot yoga, but you're only wearing very high heels. Warning: we will be sharing one pole", user: anri, start_date: Date.today + 8, end_date: (Date.today + 9), location: location7, capacity: 4, price: 3000)
-file = File.open("app/assets/images/hh15.jpg")
-event15.photos.attach(io: file, filename: "hh15.jpg", content_type: "image/jpg")
+file = File.open("app/assets/images/hh13.jpg")
+event15.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event15.save
-event16 = Event.create!(title: "Polka intensive", description: "Free your mind and discover the beauty of Central Europe.", user: will_teacher, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
+
+event16 = Event.create!(title: "Polka intensive", description: "Free your mind and discover the beauty of Central Europe.", user: yann, start_date: Date.today + 9, end_date: (Date.today + 10), location: location1, capacity: 5, price: 3000)
 file = File.open("app/assets/images/hh16.jpg")
 event16.photos.attach(io: file, filename: "hh16.jpg", content_type: "image/jpg")
 event16.save
 
 # past events for Alisa
 event17 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,11,27,18,30), end_date: DateTime.new(2024,11,27,19,30), location: location1, capacity: 30, price: 3000)
-file = File.open("app/assets/images/hh16.jpg")
+file = File.open("app/assets/images/hh14.jpg")
 event17.photos.attach(io: file, filename: "hh14.jpg", content_type: "image/jpg")
 event17.save
 
@@ -315,7 +318,7 @@ event20.photos.attach(io: file, filename: "hh13.jpg", content_type: "image/jpg")
 event20.save
 
 event21 = Event.create!(title: "Heels Beginner", description: "Walking techniques and simple choreography", user: alisa, start_date: DateTime.new(2024,12,22,18,30), end_date: DateTime.new(2024,12,22,19,30), location: location1, capacity: 30, price: 3000)
-file = File.open("app/assets/images/hh13.jpg")
+file = File.open("app/assets/images/hh14.jpg")
 event21.photos.attach(io: file, filename: "hh14.jpg", content_type: "image/jpg")
 event21.save
 
